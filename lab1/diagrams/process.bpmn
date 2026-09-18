@@ -36,6 +36,7 @@
       <bpmn:lane id="Lane_1pr8rsi" name="Платежная система">
         <bpmn:flowNodeRef>Task_5</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Gateway_Payment</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1kcy708</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_1snaetu" name="Курьер">
         <bpmn:flowNodeRef>Task_9</bpmn:flowNodeRef>
@@ -98,7 +99,7 @@
       <bpmn:outgoing>Flow_RetryBack</bpmn:outgoing>
     </bpmn:task>
     <bpmn:task id="Task_Confirm" name="Подтверждает заказ">
-      <bpmn:incoming>Flow_PaymentYes</bpmn:incoming>
+      <bpmn:incoming>Flow_1f0k21h</bpmn:incoming>
       <bpmn:outgoing>Flow_ToParallelSplit</bpmn:outgoing>
     </bpmn:task>
     <bpmn:parallelGateway id="Gateway_ParallelSplit" name="Параллельно">
@@ -163,7 +164,7 @@
     <bpmn:sequenceFlow id="Flow_RetryBack" sourceRef="Task_RetryPayment" targetRef="Task_4" />
     <bpmn:sequenceFlow id="Flow_05" sourceRef="Task_4" targetRef="Task_5" />
     <bpmn:sequenceFlow id="Flow_06" sourceRef="Task_5" targetRef="Gateway_Payment" />
-    <bpmn:sequenceFlow id="Flow_PaymentYes" name="Да" sourceRef="Gateway_Payment" targetRef="Task_Confirm" />
+    <bpmn:sequenceFlow id="Flow_PaymentYes" name="Да" sourceRef="Gateway_Payment" targetRef="Activity_1kcy708" />
     <bpmn:sequenceFlow id="Flow_PaymentNo" name="Нет" sourceRef="Gateway_Payment" targetRef="Task_RetryPayment" />
     <bpmn:sequenceFlow id="Flow_ToParallelSplit" sourceRef="Task_Confirm" targetRef="Gateway_ParallelSplit" />
     <bpmn:sequenceFlow id="Flow_ToPrep" sourceRef="Gateway_ParallelSplit" targetRef="Task_6" />
@@ -178,6 +179,11 @@
     <bpmn:sequenceFlow id="Flow_12" sourceRef="Task_11" targetRef="Task_Complete" />
     <bpmn:sequenceFlow id="Flow_13" sourceRef="Task_Complete" targetRef="Task_12" />
     <bpmn:sequenceFlow id="Flow_14" sourceRef="Task_12" targetRef="EndEvent_1" />
+    <bpmn:task id="Activity_1kcy708" name="Отправить подтверждение заказа">
+      <bpmn:incoming>Flow_PaymentYes</bpmn:incoming>
+      <bpmn:outgoing>Flow_1f0k21h</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:sequenceFlow id="Flow_1f0k21h" sourceRef="Activity_1kcy708" targetRef="Task_Confirm" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1t7b3im">
@@ -303,6 +309,10 @@
           <dc:Bounds x="4534" y="163" width="32" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="BPMNShape_08k00fv" bpmnElement="Activity_1kcy708">
+        <dc:Bounds x="2061" y="605" width="180" height="85" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_01_di" bpmnElement="Flow_01">
         <di:waypoint x="277" y="140" />
         <di:waypoint x="321" y="139" />
@@ -379,11 +389,9 @@
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_PaymentYes_di" bpmnElement="Flow_PaymentYes">
         <di:waypoint x="1901" y="648" />
-        <di:waypoint x="2021" y="648" />
-        <di:waypoint x="2021" y="311" />
-        <di:waypoint x="2061" y="311" />
+        <di:waypoint x="2061" y="648" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1925" y="656" width="14" height="14" />
+          <dc:Bounds x="1963" y="656" width="14" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_PaymentNo_di" bpmnElement="Flow_PaymentNo">
@@ -460,6 +468,10 @@
       <bpmndi:BPMNEdge id="Flow_14_di" bpmnElement="Flow_14">
         <di:waypoint x="4381" y="137" />
         <di:waypoint x="4533" y="137" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1f0k21h_di" bpmnElement="Flow_1f0k21h">
+        <di:waypoint x="2151" y="605" />
+        <di:waypoint x="2151" y="354" />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
