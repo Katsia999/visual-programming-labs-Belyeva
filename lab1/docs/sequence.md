@@ -32,6 +32,8 @@ sequenceDiagram
 
 &#x20;       App-->>Client: Уведомление об отсутствии блюда
 
+
+
 &#x20;       alt Клиент изменяет заказ
 
 &#x20;           Client->>App: Изменяет заказ
@@ -47,6 +49,8 @@ sequenceDiagram
 &#x20;           App-->>Client: Подтверждение отмены
 
 &#x20;       end
+
+
 
 &#x20;   else Блюда доступны
 
@@ -87,6 +91,8 @@ sequenceDiagram
 &#x20;           App->>Courier: Назначает доставку
 
 &#x20;           Courier-->>App: Подтверждает принятие заказа
+
+&#x20;           App-->>Client: Курьер назначен
 
 &#x20;       end
 
