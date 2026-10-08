@@ -1,0 +1,228 @@
+{
+  "checkedAt": "2026-10-08T16:50:47.841Z",
+  "api": [
+    {
+      "path": "/api/text",
+      "status": 200,
+      "body": "Беляева СДП-ИИ-241 — лабораторная 2"
+    },
+    {
+      "path": "/api/info",
+      "status": 200,
+      "body": "{\"student\":\"Беляева\",\"group\":\"СДП-ИИ-241\"}"
+    },
+    {
+      "path": "/api/items",
+      "status": 200,
+      "body": "[{\"id\":1,\"name\":\"Пицца\"},{\"id\":2,\"name\":\"Салат\"},{\"id\":3,\"name\":\"Суп\"}]"
+    },
+    {
+      "path": "/api/items?id=1",
+      "status": 200,
+      "body": "{\"id\":1,\"name\":\"Пицца\"}"
+    },
+    {
+      "path": "/api/items?id=abc",
+      "status": 400,
+      "body": "{\"error\":\"id должен быть положительным целым числом\"}"
+    },
+    {
+      "path": "/api/items?id=0",
+      "status": 400,
+      "body": "{\"error\":\"id должен быть положительным целым числом\"}"
+    },
+    {
+      "path": "/api/items?id=-1",
+      "status": 400,
+      "body": "{\"error\":\"id должен быть положительным целым числом\"}"
+    },
+    {
+      "path": "/api/items?id=1.5",
+      "status": 400,
+      "body": "{\"error\":\"id должен быть положительным целым числом\"}"
+    },
+    {
+      "path": "/api/items?id=",
+      "status": 400,
+      "body": "{\"error\":\"id должен быть положительным целым числом\"}"
+    },
+    {
+      "path": "/api/items?id=99",
+      "status": 404,
+      "body": "{\"error\":\"Блюдо не найдено\"}"
+    }
+  ],
+  "debug": [
+    {
+      "id": "d01",
+      "z": "lab2-01",
+      "path": "lab2-01",
+      "name": "d01",
+      "topic": "lab2/belyeva/basic",
+      "msg": "{\"_msgid\":\"30f747a6e6c6ce28\",\"payload\":\"Беляева\",\"topic\":\"lab2/belyeva/basic\"}",
+      "format": "Object"
+    },
+    {
+      "id": "d02",
+      "z": "lab2-02",
+      "path": "lab2-02",
+      "name": "d02",
+      "topic": "lab2/belyeva/basic",
+      "msg": "{\"_msgid\":\"f5bc292c2c5074d0\",\"payload\":{\"student\":\"Беляева\",\"group\":\"СДП-ИИ-241\",\"total\":35,\"level\":\"high\"},\"topic\":\"lab2/belyeva/basic\"}",
+      "format": "Object"
+    },
+    {
+      "id": "d03-high",
+      "z": "lab2-03",
+      "path": "lab2-03",
+      "name": "d03-high",
+      "topic": "lab2/belyeva/basic",
+      "msg": "{\"_msgid\":\"2d06d9f6dfa0e55c\",\"payload\":{\"student\":\"Беляева\",\"group\":\"СДП-ИИ-241\",\"total\":35,\"level\":\"high\"},\"topic\":\"lab2/belyeva/basic\"}",
+      "format": "Object"
+    },
+    {
+      "id": "d03-low",
+      "z": "lab2-03",
+      "path": "lab2-03",
+      "name": "d03-low",
+      "topic": "lab2/belyeva/basic",
+      "msg": "{\"_msgid\":\"6a6546fe542ed33c\",\"payload\":{\"student\":\"Беляева\",\"group\":\"СДП-ИИ-241\",\"total\":17,\"level\":\"low\"},\"topic\":\"lab2/belyeva/basic\"}",
+      "format": "Object"
+    },
+    {
+      "id": "d04",
+      "z": "lab2-04",
+      "path": "lab2-04",
+      "name": "d04",
+      "topic": "lab2/belyeva/change",
+      "msg": "{\"_msgid\":\"51454923e9994e2c\",\"payload\":\"Беляева СДП-ИИ-241 — Change\",\"topic\":\"lab2/belyeva/change\",\"timestamp\":1791478235028}",
+      "format": "Object"
+    },
+    {
+      "id": "d05",
+      "z": "lab2-05",
+      "path": "lab2-05",
+      "name": "d05",
+      "topic": "lab2/belyeva/basic",
+      "msg": "{\"_msgid\":\"c5cc8d302372e05e\",\"payload\":\"Студентка Беляева, группа СДП-ИИ-241 изучает Node-RED.\",\"topic\":\"lab2/belyeva/basic\"}",
+      "format": "Object"
+    },
+    {
+      "id": "d11",
+      "z": "lab2-11",
+      "path": "lab2-11",
+      "name": "d11",
+      "topic": "lab2/belyeva/basic",
+      "msg": "{\"_msgid\":\"a97b4e58dfc9b1d5\",\"payload\":\"{\\n  \\\"student\\\": \\\"Беляева\\\",\\n  \\\"group\\\": \\\"СДП-ИИ-241\\\",\\n  \\\"createdAt\\\": \\\"2026-10-08T16:50:35.082Z\\\",\\n  \\\"order\\\": \\\"Пицца\\\"\\n}\",\"topic\":\"lab2/belyeva/basic\",\"filename\":\"/data/order.json\"}",
+      "format": "Object"
+    },
+    {
+      "id": "d7",
+      "z": "lab2-07",
+      "path": "lab2-07",
+      "name": "d7",
+      "topic": "student/belyeva/lab2/temperature",
+      "msg": "{\"topic\":\"student/belyeva/lab2/temperature\",\"payload\":21.2,\"qos\":1,\"retain\":false,\"_msgid\":\"4915b609f105ee8e\"}",
+      "format": "Object"
+    },
+    {
+      "id": "d12",
+      "z": "lab2-12",
+      "path": "lab2-12",
+      "name": "d12",
+      "topic": "lab2/belyeva/basic",
+      "msg": "{\"_msgid\":\"3b54a9888a644a92\",\"payload\":{\"student\":\"Беляева\",\"group\":\"СДП-ИИ-241\",\"orderCount\":3},\"topic\":\"lab2/belyeva/basic\"}",
+      "format": "Object"
+    },
+    {
+      "id": "d11",
+      "z": "lab2-11",
+      "path": "lab2-11",
+      "name": "d11",
+      "topic": "lab2/belyeva/basic",
+      "msg": "{\"_msgid\":\"d3df0a80885ff3f7\",\"payload\":\"{\\n  \\\"student\\\": \\\"Беляева\\\",\\n  \\\"group\\\": \\\"СДП-ИИ-241\\\",\\n  \\\"createdAt\\\": \\\"2026-10-08T16:50:35.082Z\\\",\\n  \\\"order\\\": \\\"Пицца\\\"\\n}\",\"topic\":\"lab2/belyeva/basic\",\"filename\":\"/data/order.json\"}",
+      "format": "Object"
+    },
+    {
+      "id": "d13",
+      "z": "lab2-13",
+      "path": "lab2-13",
+      "name": "d13",
+      "topic": "student/belyeva/lab2/local",
+      "msg": "{\"topic\":\"student/belyeva/lab2/local\",\"payload\":26,\"qos\":1,\"retain\":false,\"_msgid\":\"139f0d6a7625872e\"}",
+      "format": "Object"
+    },
+    {
+      "id": "d06",
+      "z": "lab2-06",
+      "path": "lab2-06",
+      "name": "d06",
+      "topic": "lab2/belyeva/basic",
+      "msg": "{\"_msgid\":\"a9c219aafc7e3a74\",\"payload\":{\"type\":\"programming\",\"setup\":\"Why do programmers prefer dark chocolate?\",\"punchline\":\"Because it's bitter like their code.\",\"id\":416},\"topic\":\"lab2/belyeva/basic\",\"statusCode\":200,\"headers\":{\"content-type\":\"application/json; charset=utf-8\",\"vary\":\"Accept-Encoding\",\"x-powered-by\":\"Express\",\"access-control-allow-origin\":\"*\",\"etag\":\"W/\\\"86-04kabjnAMY4vjlC438s/Hsr2qKc\\\"\",\"x-cloud-trace-context\":\"556f839f7ca33841d4fde20baf9e910f\",\"date\":\"Thu, 08 Oct 2026 16:50:36 GMT\",\"server\":\"Google Frontend\",\"content-length\":\"134\",\"alt-svc\":\"h3=\\\":443\\\"; ma=2592000,h3-29=\\\":443\\\"; ma=2592000\",\"x-node-red-request-node\":\"299ce990\"},\"responseUrl\":\"https://official-joke-api.appspot.com/random_joke\",\"redirectList\":[],\"retry\":0}",
+      "format": "Object"
+    },
+    {
+      "id": "d01",
+      "z": "lab2-01",
+      "path": "lab2-01",
+      "name": "d01",
+      "topic": "lab2/belyeva/basic",
+      "msg": "{\"payload\":\"Беляева\",\"topic\":\"lab2/belyeva/basic\",\"_msgid\":\"623479e4eaed7ed2\"}",
+      "format": "Object"
+    },
+    {
+      "id": "d13",
+      "z": "lab2-13",
+      "path": "lab2-13",
+      "name": "d13",
+      "topic": "student/belyeva/lab2/local",
+      "msg": "{\"topic\":\"student/belyeva/lab2/local\",\"payload\":20.8,\"qos\":1,\"retain\":false,\"_msgid\":\"83a95395523ad4d2\"}",
+      "format": "Object"
+    },
+    {
+      "id": "d7",
+      "z": "lab2-07",
+      "path": "lab2-07",
+      "name": "d7",
+      "topic": "student/belyeva/lab2/temperature",
+      "msg": "{\"topic\":\"student/belyeva/lab2/temperature\",\"payload\":29.3,\"qos\":1,\"retain\":false,\"_msgid\":\"b8d7ca5f259196ac\"}",
+      "format": "Object"
+    },
+    {
+      "id": "d01",
+      "z": "lab2-01",
+      "path": "lab2-01",
+      "name": "d01",
+      "topic": "lab2/belyeva/basic",
+      "msg": "{\"payload\":\"Беляева\",\"topic\":\"lab2/belyeva/basic\",\"_msgid\":\"24d8a0ceec5f1765\"}",
+      "format": "Object"
+    },
+    {
+      "id": "d13",
+      "z": "lab2-13",
+      "path": "lab2-13",
+      "name": "d13",
+      "topic": "student/belyeva/lab2/local",
+      "msg": "{\"topic\":\"student/belyeva/lab2/local\",\"payload\":27.8,\"qos\":1,\"retain\":false,\"_msgid\":\"1c3c41cad04b625d\"}",
+      "format": "Object"
+    },
+    {
+      "id": "d7",
+      "z": "lab2-07",
+      "path": "lab2-07",
+      "name": "d7",
+      "topic": "student/belyeva/lab2/temperature",
+      "msg": "{\"topic\":\"student/belyeva/lab2/temperature\",\"payload\":22.8,\"qos\":1,\"retain\":false,\"_msgid\":\"266a3a483deca0df\"}",
+      "format": "Object"
+    },
+    {
+      "id": "d02",
+      "z": "lab2-02",
+      "path": "lab2-02",
+      "name": "d02",
+      "topic": "lab2/belyeva/basic",
+      "msg": "{\"_msgid\":\"e0c4c77443882623\",\"payload\":{\"student\":\"Беляева\",\"group\":\"СДП-ИИ-241\",\"total\":35,\"level\":\"high\"},\"topic\":\"lab2/belyeva/basic\"}",
+      "format": "Object"
+    }
+  ]
+}

@@ -90,6 +90,11 @@
     "pollinterval": "300",
     "addressfamily": "4",
     "usesocks": false,
-    "verboselogging": false
+    "verboselogging": false,
+    "socksport": "6667",
+    "socksprotocol": "socks5",
+    "localbotport": "8443",
+    "publicbotport": "8443",
+    "localbothost": "0.0.0.0"
   }
 ]

@@ -9,7 +9,7 @@ if (-not (Test-Path 'runtime/node-red/flows.json')) {
     ConvertTo-Json -InputObject $flows -Depth 100 | Set-Content 'runtime/node-red/flows.json' -Encoding utf8
 }
 Copy-Item 'settings.js' 'runtime/node-red/settings.js' -Force
-docker compose run --rm --no-deps node-red npm install --prefix /data node-red-dashboard@3.6.6 node-red-contrib-telegrambot@19.0.3
+docker compose run --rm --no-deps --entrypoint npm node-red install --prefix /data node-red-dashboard@3.6.6 node-red-contrib-telegrambot@18.0.0
 if ($LASTEXITCODE -ne 0) { throw 'Не удалось установить дополнительные ноды' }
 docker compose up -d
 if ($LASTEXITCODE -ne 0) { throw 'Не удалось запустить контейнеры' }

@@ -38,7 +38,7 @@
   {
     "id": "h06",
     "type": "http request",
-    "name": "GET catfacts.ninja/fact",
+    "name": "GET random_joke",
     "x": 470,
     "y": 120,
     "wires": [
@@ -49,7 +49,7 @@
     "method": "GET",
     "ret": "obj",
     "paytoqs": "ignore",
-    "url": "https://catfacts.ninja/fact",
+    "url": "https://official-joke-api.appspot.com/random_joke",
     "tls": "",
     "persist": false,
     "proxy": "",
