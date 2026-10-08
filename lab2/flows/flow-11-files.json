@@ -1,0 +1,140 @@
+[
+  {
+    "id": "lab2-11",
+    "type": "tab",
+    "label": "11 Файлы — Беляева СДП-ИИ-241",
+    "disabled": false,
+    "info": "Лабораторная работа 2"
+  },
+  {
+    "id": "i11-write",
+    "type": "inject",
+    "name": "Беляева СДП-ИИ-241",
+    "x": 170,
+    "y": 120,
+    "wires": [
+      [
+        "f11"
+      ]
+    ],
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "payload": "Беляева",
+    "payloadType": "str",
+    "topic": "lab2/belyeva/basic",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "z": "lab2-11"
+  },
+  {
+    "id": "f11",
+    "type": "function",
+    "name": "Запись заказа в JSON",
+    "x": 430,
+    "y": 120,
+    "wires": [
+      [
+        "write11"
+      ]
+    ],
+    "func": "msg.payload = JSON.stringify({student:'Беляева',group:'СДП-ИИ-241',createdAt:new Date().toISOString(),order:'Пицца'},null,2);\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "z": "lab2-11"
+  },
+  {
+    "id": "write11",
+    "type": "file",
+    "name": "Сохранить /data/order.json",
+    "x": 800,
+    "y": 120,
+    "wires": [
+      [
+        "d11"
+      ]
+    ],
+    "filename": "/data/order.json",
+    "filenameType": "str",
+    "appendNewline": false,
+    "createDir": true,
+    "overwriteFile": "true",
+    "encoding": "utf8",
+    "z": "lab2-11"
+  },
+  {
+    "id": "i11-read",
+    "type": "inject",
+    "name": "Беляева СДП-ИИ-241",
+    "x": 170,
+    "y": 260,
+    "wires": [
+      [
+        "read11"
+      ]
+    ],
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "payload": "Беляева",
+    "payloadType": "str",
+    "topic": "lab2/belyeva/basic",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "z": "lab2-11"
+  },
+  {
+    "id": "read11",
+    "type": "file in",
+    "name": "Прочитать /data/order.json",
+    "x": 470,
+    "y": 260,
+    "wires": [
+      [
+        "d11"
+      ]
+    ],
+    "filename": "/data/order.json",
+    "filenameType": "str",
+    "format": "utf8",
+    "chunk": false,
+    "sendError": false,
+    "encoding": "utf8",
+    "allProps": false,
+    "z": "lab2-11"
+  },
+  {
+    "id": "d11",
+    "type": "debug",
+    "name": "d11",
+    "x": 820,
+    "y": 260,
+    "wires": [],
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "z": "lab2-11"
+  }
+]

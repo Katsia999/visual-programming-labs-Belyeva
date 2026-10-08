@@ -1,0 +1,141 @@
+[
+  {
+    "id": "lab2-09",
+    "type": "tab",
+    "label": "09 Dashboard — Беляева СДП-ИИ-241",
+    "disabled": false,
+    "info": "Лабораторная работа 2"
+  },
+  {
+    "id": "i09",
+    "type": "inject",
+    "name": "Беляева СДП-ИИ-241",
+    "x": 170,
+    "y": 120,
+    "wires": [
+      [
+        "f09"
+      ]
+    ],
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "payload": "Беляева",
+    "payloadType": "str",
+    "topic": "lab2/belyeva/basic",
+    "repeat": "5",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "z": "lab2-09"
+  },
+  {
+    "id": "f09",
+    "type": "function",
+    "name": "Датчик температуры",
+    "x": 430,
+    "y": 120,
+    "wires": [
+      [
+        "g09",
+        "chart09"
+      ]
+    ],
+    "func": "msg.payload = Math.round((18 + Math.random() * 12) * 10) / 10;\nmsg.topic = 'Беляева СДП-ИИ-241';\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "z": "lab2-09"
+  },
+  {
+    "id": "g09",
+    "type": "ui_gauge",
+    "name": "Температура",
+    "x": 750,
+    "y": 90,
+    "wires": [],
+    "group": "ui-group",
+    "order": 1,
+    "width": 6,
+    "height": 4,
+    "gtype": "gage",
+    "title": "Температура",
+    "label": "°C",
+    "format": "{{value}}",
+    "min": 0,
+    "max": 40,
+    "colors": [
+      "#00b500",
+      "#e6e600",
+      "#ca3838"
+    ],
+    "seg1": "",
+    "seg2": "",
+    "diff": false,
+    "className": "",
+    "z": "lab2-09"
+  },
+  {
+    "id": "chart09",
+    "type": "ui_chart",
+    "name": "История температуры",
+    "x": 750,
+    "y": 220,
+    "wires": [
+      []
+    ],
+    "group": "ui-group",
+    "order": 2,
+    "width": 12,
+    "height": 5,
+    "label": "Температура во времени",
+    "chartType": "line",
+    "legend": "true",
+    "xformat": "HH:mm:ss",
+    "interpolate": "linear",
+    "nodata": "Ожидание датчика",
+    "dot": true,
+    "ymin": "0",
+    "ymax": "40",
+    "removeOlder": "10",
+    "removeOlderPoints": "",
+    "removeOlderUnit": "60",
+    "cutout": 0,
+    "useOneColor": false,
+    "useUTC": false,
+    "colors": [
+      "#1f77b4"
+    ],
+    "outputs": 1,
+    "useDifferentColor": false,
+    "className": "",
+    "z": "lab2-09"
+  },
+  {
+    "id": "ui-group",
+    "type": "ui_group",
+    "name": "Датчик — Беляева СДП-ИИ-241",
+    "tab": "ui-tab",
+    "order": 1,
+    "disp": true,
+    "width": "12",
+    "collapse": false,
+    "className": ""
+  },
+  {
+    "id": "ui-tab",
+    "type": "ui_tab",
+    "name": "Беляева СДП-ИИ-241",
+    "icon": "dashboard",
+    "disabled": false,
+    "hidden": false
+  }
+]

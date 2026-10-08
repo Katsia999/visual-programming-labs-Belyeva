@@ -1,0 +1,134 @@
+[
+  {
+    "id": "lab2-13",
+    "type": "tab",
+    "label": "13 Ачивка 1 — локальный MQTT — Беляева СДП-ИИ-241",
+    "disabled": false,
+    "info": "Лабораторная работа 2"
+  },
+  {
+    "id": "i13",
+    "type": "inject",
+    "name": "Беляева СДП-ИИ-241",
+    "x": 170,
+    "y": 120,
+    "wires": [
+      [
+        "f13"
+      ]
+    ],
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "payload": "Беляева",
+    "payloadType": "str",
+    "topic": "student/belyeva/lab2/local",
+    "repeat": "5",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "z": "lab2-13"
+  },
+  {
+    "id": "f13",
+    "type": "function",
+    "name": "Случайная температура",
+    "x": 430,
+    "y": 120,
+    "wires": [
+      [
+        "out13"
+      ]
+    ],
+    "func": "msg.payload = Math.round((18 + Math.random() * 12) * 10) / 10;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "z": "lab2-13"
+  },
+  {
+    "id": "out13",
+    "type": "mqtt out",
+    "name": "student/belyeva/lab2/local",
+    "x": 820,
+    "y": 120,
+    "wires": [],
+    "topic": "student/belyeva/lab2/local",
+    "qos": "1",
+    "retain": "false",
+    "respTopic": "",
+    "contentType": "",
+    "userProps": "",
+    "correl": "",
+    "expiry": "",
+    "broker": "broker13",
+    "z": "lab2-13"
+  },
+  {
+    "id": "in13",
+    "type": "mqtt in",
+    "name": "student/belyeva/lab2/local",
+    "x": 300,
+    "y": 260,
+    "wires": [
+      [
+        "d13"
+      ]
+    ],
+    "topic": "student/belyeva/lab2/local",
+    "qos": "1",
+    "datatype": "auto-detect",
+    "broker": "broker13",
+    "nl": false,
+    "rap": true,
+    "rh": 0,
+    "inputs": 0,
+    "z": "lab2-13"
+  },
+  {
+    "id": "d13",
+    "type": "debug",
+    "name": "d13",
+    "x": 820,
+    "y": 260,
+    "wires": [],
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "z": "lab2-13"
+  },
+  {
+    "id": "broker13",
+    "type": "mqtt-broker",
+    "name": "Локальный Mosquitto",
+    "broker": "mosquitto",
+    "port": "1883",
+    "clientid": "belyeva-lab2-13",
+    "autoConnect": true,
+    "usetls": false,
+    "protocolVersion": "4",
+    "keepalive": "60",
+    "cleansession": true,
+    "autoUnsubscribe": true,
+    "birthTopic": "",
+    "birthQos": "0",
+    "birthPayload": "",
+    "closeTopic": "",
+    "closeQos": "0",
+    "closePayload": "",
+    "willTopic": "",
+    "willQos": "0",
+    "willPayload": ""
+  }
+]

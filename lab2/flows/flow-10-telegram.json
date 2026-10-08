@@ -1,0 +1,95 @@
+[
+  {
+    "id": "lab2-10",
+    "type": "tab",
+    "label": "10 Telegram бот — Беляева СДП-ИИ-241",
+    "disabled": false,
+    "info": "Лабораторная работа 2"
+  },
+  {
+    "id": "recv10",
+    "type": "telegram receiver",
+    "name": "Сообщения боту",
+    "x": 190,
+    "y": 120,
+    "wires": [
+      [
+        "f10"
+      ],
+      [
+        "d10"
+      ]
+    ],
+    "bot": "bot10",
+    "saveDataDir": "",
+    "filterCommands": false,
+    "z": "lab2-10"
+  },
+  {
+    "id": "f10",
+    "type": "function",
+    "name": "/start, /info и echo",
+    "x": 430,
+    "y": 120,
+    "wires": [
+      [
+        "send10"
+      ]
+    ],
+    "func": "if (!msg.payload || msg.payload.type !== 'message') return null;\nconst text = String(msg.payload.content || '');\nconst command = text.split(/\\s+/)[0].split('@')[0];\nlet reply;\nif (command === '/start') { reply = 'Привет! Я бот Беляевой, СДП-ИИ-241. Команда /info расскажет о лабораторной. Остальные сообщения я повторяю.'; }\nelse if (command === '/info') { reply = 'Лабораторная №2: Node-RED. Беляева, СДП-ИИ-241. Ачивка №1 — локальный MQTT.'; }\nelse { reply = 'Эхо: ' + text; }\nmsg.payload = {chatId:msg.payload.chatId,type:'message',content:reply};\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "z": "lab2-10"
+  },
+  {
+    "id": "send10",
+    "type": "telegram sender",
+    "name": "Ответ бота",
+    "x": 780,
+    "y": 120,
+    "wires": [
+      [
+        "d10"
+      ],
+      [
+        "d10"
+      ]
+    ],
+    "bot": "bot10",
+    "haserroroutput": true,
+    "outputs": 2,
+    "z": "lab2-10"
+  },
+  {
+    "id": "d10",
+    "type": "debug",
+    "name": "d10",
+    "x": 820,
+    "y": 260,
+    "wires": [],
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "z": "lab2-10"
+  },
+  {
+    "id": "bot10",
+    "type": "telegram bot",
+    "botname": "tvl_lab2_belyeva_bot",
+    "usernames": "",
+    "chatids": "",
+    "baseapiurl": "",
+    "testenvironment": false,
+    "updatemode": "polling",
+    "pollinterval": "300",
+    "addressfamily": "4",
+    "usesocks": false,
+    "verboselogging": false
+  }
+]

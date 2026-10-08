@@ -1,0 +1,77 @@
+[
+  {
+    "id": "lab2-06",
+    "type": "tab",
+    "label": "06 HTTP Request — Беляева СДП-ИИ-241",
+    "disabled": false,
+    "info": "Лабораторная работа 2"
+  },
+  {
+    "id": "i06",
+    "type": "inject",
+    "name": "Беляева СДП-ИИ-241",
+    "x": 170,
+    "y": 120,
+    "wires": [
+      [
+        "h06"
+      ]
+    ],
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "payload": "Беляева",
+    "payloadType": "str",
+    "topic": "lab2/belyeva/basic",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "z": "lab2-06"
+  },
+  {
+    "id": "h06",
+    "type": "http request",
+    "name": "GET catfacts.ninja/fact",
+    "x": 470,
+    "y": 120,
+    "wires": [
+      [
+        "d06"
+      ]
+    ],
+    "method": "GET",
+    "ret": "obj",
+    "paytoqs": "ignore",
+    "url": "https://catfacts.ninja/fact",
+    "tls": "",
+    "persist": false,
+    "proxy": "",
+    "insecureHTTPParser": false,
+    "authType": "",
+    "senderr": false,
+    "headers": [],
+    "z": "lab2-06"
+  },
+  {
+    "id": "d06",
+    "type": "debug",
+    "name": "d06",
+    "x": 820,
+    "y": 120,
+    "wires": [],
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "z": "lab2-06"
+  }
+]

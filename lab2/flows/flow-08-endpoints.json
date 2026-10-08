@@ -1,0 +1,150 @@
+[
+  {
+    "id": "lab2-08",
+    "type": "tab",
+    "label": "08 GET API — Беляева СДП-ИИ-241",
+    "disabled": false,
+    "info": "Лабораторная работа 2"
+  },
+  {
+    "id": "h08-1",
+    "type": "http in",
+    "name": "GET /api/text",
+    "x": 180,
+    "y": 100,
+    "wires": [
+      [
+        "f08-1"
+      ]
+    ],
+    "url": "/api/text",
+    "method": "get",
+    "upload": false,
+    "swaggerDoc": "",
+    "z": "lab2-08"
+  },
+  {
+    "id": "f08-1",
+    "type": "function",
+    "name": "Ответ и проверка параметров",
+    "x": 430,
+    "y": 100,
+    "wires": [
+      [
+        "r08-1"
+      ]
+    ],
+    "func": "msg.headers = {'Content-Type':'text/plain; charset=utf-8'}; msg.payload = 'Беляева СДП-ИИ-241 — лабораторная 2'; return msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "z": "lab2-08"
+  },
+  {
+    "id": "r08-1",
+    "type": "http response",
+    "name": "HTTP ответ",
+    "x": 800,
+    "y": 100,
+    "wires": [],
+    "statusCode": "",
+    "headers": {},
+    "z": "lab2-08"
+  },
+  {
+    "id": "h08-2",
+    "type": "http in",
+    "name": "GET /api/info",
+    "x": 180,
+    "y": 200,
+    "wires": [
+      [
+        "f08-2"
+      ]
+    ],
+    "url": "/api/info",
+    "method": "get",
+    "upload": false,
+    "swaggerDoc": "",
+    "z": "lab2-08"
+  },
+  {
+    "id": "f08-2",
+    "type": "function",
+    "name": "Ответ и проверка параметров",
+    "x": 430,
+    "y": 200,
+    "wires": [
+      [
+        "r08-2"
+      ]
+    ],
+    "func": "msg.headers = {'Content-Type':'application/json; charset=utf-8'}; msg.payload = {student:'Беляева',group:'СДП-ИИ-241'}; return msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "z": "lab2-08"
+  },
+  {
+    "id": "r08-2",
+    "type": "http response",
+    "name": "HTTP ответ",
+    "x": 800,
+    "y": 200,
+    "wires": [],
+    "statusCode": "",
+    "headers": {},
+    "z": "lab2-08"
+  },
+  {
+    "id": "h08-3",
+    "type": "http in",
+    "name": "GET /api/items",
+    "x": 180,
+    "y": 300,
+    "wires": [
+      [
+        "f08-3"
+      ]
+    ],
+    "url": "/api/items",
+    "method": "get",
+    "upload": false,
+    "swaggerDoc": "",
+    "z": "lab2-08"
+  },
+  {
+    "id": "f08-3",
+    "type": "function",
+    "name": "Ответ и проверка параметров",
+    "x": 430,
+    "y": 300,
+    "wires": [
+      [
+        "r08-3"
+      ]
+    ],
+    "func": "const items = [{id:1,name:'Пицца'},{id:2,name:'Салат'},{id:3,name:'Суп'}];\nconst id = msg.req.query.id;\nmsg.headers = {'Content-Type':'application/json; charset=utf-8'};\nif (id === undefined) { msg.payload = items; }\nelse if (!/^[1-9][0-9]*$/.test(String(id))) { msg.statusCode = 400; msg.payload = {error:'id должен быть положительным целым числом'}; }\nelse { const item = items.find(item => item.id === Number(id)); if (item) { msg.payload = item; } else { msg.statusCode = 404; msg.payload = {error:'Блюдо не найдено'}; } }\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "z": "lab2-08"
+  },
+  {
+    "id": "r08-3",
+    "type": "http response",
+    "name": "HTTP ответ",
+    "x": 800,
+    "y": 300,
+    "wires": [],
+    "statusCode": "",
+    "headers": {},
+    "z": "lab2-08"
+  }
+]

@@ -1,0 +1,149 @@
+[
+  {
+    "id": "lab2-03",
+    "type": "tab",
+    "label": "03 Switch — Беляева СДП-ИИ-241",
+    "disabled": false,
+    "info": "Лабораторная работа 2"
+  },
+  {
+    "id": "i03",
+    "type": "inject",
+    "name": "Беляева СДП-ИИ-241",
+    "x": 170,
+    "y": 120,
+    "wires": [
+      [
+        "f03"
+      ]
+    ],
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "payload": "20",
+    "payloadType": "num",
+    "topic": "lab2/belyeva/basic",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "z": "lab2-03"
+  },
+  {
+    "id": "i03-low",
+    "type": "inject",
+    "name": "Беляева СДП-ИИ-241",
+    "x": 170,
+    "y": 200,
+    "wires": [
+      [
+        "f03"
+      ]
+    ],
+    "props": [
+      {
+        "p": "payload"
+      },
+      {
+        "p": "topic",
+        "vt": "str"
+      }
+    ],
+    "payload": "2",
+    "payloadType": "num",
+    "topic": "lab2/belyeva/basic",
+    "repeat": "",
+    "crontab": "",
+    "once": false,
+    "onceDelay": 0.1,
+    "z": "lab2-03"
+  },
+  {
+    "id": "f03",
+    "type": "function",
+    "name": "Обработка данных",
+    "x": 430,
+    "y": 120,
+    "wires": [
+      [
+        "s03"
+      ]
+    ],
+    "func": "const values = [Number(msg.payload), 5, 10];\nlet total = 0;\nfor (let i = 0; i < values.length; i++) { total += values[i]; }\nlet level;\nif (total >= 30) { level = 'high'; } else { level = 'low'; }\nconst result = {student: 'Беляева', group: 'СДП-ИИ-241', total, level};\nmsg.payload = result;\nreturn msg;",
+    "outputs": 1,
+    "noerr": 0,
+    "initialize": "",
+    "finalize": "",
+    "libs": [],
+    "z": "lab2-03"
+  },
+  {
+    "id": "s03",
+    "type": "switch",
+    "name": "Сумма >= 30?",
+    "x": 640,
+    "y": 120,
+    "wires": [
+      [
+        "d03-high"
+      ],
+      [
+        "d03-low"
+      ]
+    ],
+    "property": "payload.total",
+    "propertyType": "msg",
+    "rules": [
+      {
+        "t": "gte",
+        "v": "30",
+        "vt": "num"
+      },
+      {
+        "t": "lt",
+        "v": "30",
+        "vt": "num"
+      }
+    ],
+    "checkall": "true",
+    "repair": false,
+    "outputs": 2,
+    "z": "lab2-03"
+  },
+  {
+    "id": "d03-high",
+    "type": "debug",
+    "name": "d03-high",
+    "x": 880,
+    "y": 80,
+    "wires": [],
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "z": "lab2-03"
+  },
+  {
+    "id": "d03-low",
+    "type": "debug",
+    "name": "d03-low",
+    "x": 880,
+    "y": 200,
+    "wires": [],
+    "active": true,
+    "tosidebar": true,
+    "console": false,
+    "tostatus": false,
+    "complete": "true",
+    "targetType": "full",
+    "z": "lab2-03"
+  }
+]
