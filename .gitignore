@@ -1,3 +1,6 @@
 Thumbs.db
 .DS_Store
 *.tmp
+lab2/runtime/
+lab2/.env
+lab2/node_modules/
