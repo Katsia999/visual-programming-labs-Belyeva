@@ -10,3 +10,5 @@
 - [Лабораторная 2 — Node-RED и локальный MQTT](lab2/README.md)
 - [Отчёт по лабораторной 2](lab2/docs/report.md)
 
+
+- [Лабораторная 3 — Bubble и CRUD](lab3/README.md)
