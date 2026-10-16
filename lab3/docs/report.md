@@ -180,17 +180,19 @@
 
 ![Отклонение нуля порций](../screenshots/08-validation.png)
 
-## Работа с Git
+## История коммитов
 
-Работа сохранена этапами через Git Bash с автором, настроенным в репозитории: Беляева Екатерина. Коммиты:
+Работа сохранена этапами через Git Bash с автором, настроенным в репозитории: Беляева Екатерина. Коммиты, в которых менялись файлы `lab3`:
 
-1. Add lab3 requirements and Bubble prompts
-2. Add Bubble app generation and preview
-3. Add lab3 UI styles and MealPlan data
-4. Add MealPlan workflows and CRUD verification
-5. Complete lab3 report and component screenshots
+| Коммит | Дата | Изменения |
+| --- | --- | --- |
+| [ab4ad18](https://github.com/Katsia999/visual-programming-labs-Belyeva/commit/ab4ad18ecc41e4655e6b092ad6630b4bf73b8acb) | 2026-10-15 | Добавила задания и промпты для третьей лабораторной |
+| [049bd4a](https://github.com/Katsia999/visual-programming-labs-Belyeva/commit/049bd4ab23e231073482450c4338e1b14e9d6671) | 2026-10-15 | Добавила приложение Bubble и его предпросмотр |
+| [f2bff93](https://github.com/Katsia999/visual-programming-labs-Belyeva/commit/f2bff93ff3da98e36b7d40ade73da407ca100520) | 2026-10-15 | Настроила оформление и данные MealPlan |
+| [fde8a92](https://github.com/Katsia999/visual-programming-labs-Belyeva/commit/fde8a927a3ac967878f8c2b5bd5b20d0393eb88d) | 2026-10-15 | Добавила действия MealPlan и проверила работу с данными |
+| [72433c2](https://github.com/Katsia999/visual-programming-labs-Belyeva/commit/72433c20da743e0ae4a3d141748b198e7f58b4dc) | 2026-10-15 | Дополнила отчёт и скриншоты третьей лабораторной |
 
-Исходное приложение хранится в Bubble; в репозитории находятся отчёт, промпты и снимки этапов. Конспект подготовки к защите оставлен локально и исключён из Git. Отправка новых коммитов на GitHub не выполнялась.
+Исходное приложение хранится в Bubble; в репозитории опубликованы отчёт, промпты и снимки этапов. Конспект подготовки к защите оставлен локально и исключён из Git.
 
 ## Выводы
 

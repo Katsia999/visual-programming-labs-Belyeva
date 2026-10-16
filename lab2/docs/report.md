@@ -203,6 +203,21 @@ node verify-persistence.mjs
 
 Этапы сохранены отдельными коммитами: Docker и Mosquitto, потоки, запуск и API, исправления и проверки, отчёт и скриншоты. Автор соответствует существующим настройкам Git репозитория; коммиты создаются через Git Bash. Runtime и секреты не отслеживаются.
 
+## История коммитов
+
+Коммиты, в которых менялись файлы `lab2`, от первого этапа до добавления переписки с ботом:
+
+| Коммит | Дата | Изменения |
+| --- | --- | --- |
+| [a425898](https://github.com/Katsia999/visual-programming-labs-Belyeva/commit/a425898af022ee2eaf65f5e9cc27146200ec95c2) | 2026-10-08 | Настроила Docker и Mosquitto для второй лабораторной |
+| [596864c](https://github.com/Katsia999/visual-programming-labs-Belyeva/commit/596864c6a1b8e54ea3e26bc128065d1f58a5f43e) | 2026-10-08 | Добавила потоки Node-RED |
+| [51af7f5](https://github.com/Katsia999/visual-programming-labs-Belyeva/commit/51af7f5fa05429c18a43c5a0b0d049a461f3695c) | 2026-10-08 | Добавила запуск контейнеров и описание API |
+| [c416ac1](https://github.com/Katsia999/visual-programming-labs-Belyeva/commit/c416ac128775533b5f5e9a2421f271d4f4829d1f) | 2026-10-08 | Исправила запуск Node-RED и добавила проверки |
+| [d109d78](https://github.com/Katsia999/visual-programming-labs-Belyeva/commit/d109d788050f54740d208244164a358f36595b04) | 2026-10-08 | Добавила отчёт и скриншоты второй лабораторной |
+| [81f9a06](https://github.com/Katsia999/visual-programming-labs-Belyeva/commit/81f9a0699d514c6a69ac24ace0a9dc6ff6d5950f) | 2026-10-15 | Пересняла экраны Docker без курсора |
+| [69ab792](https://github.com/Katsia999/visual-programming-labs-Belyeva/commit/69ab79278a331bcbc697fd5b24835b8ccb98483d) | 2026-10-16 | Добавила скриншоты ответов API в отчёт второй лабораторной |
+| [bff4a86](https://github.com/Katsia999/visual-programming-labs-Belyeva/commit/bff4a86a866b41f40ac429950d15b3737a73c420) | 2026-10-16 | Добавила переписку с ботом в отчёт второй лабораторной |
+
 ## Вывод
 
 Созданы и проверены 12 обязательных потоков и поток локального MQTT. Проверены HTTP-статусы, обработка данных, MQTT, dashboard, команды и эхо Telegram, сохранение файла и контекста после перезапуска. Браузерные снимки GET API и скриншот переписки Telegram приложены к отчёту.
