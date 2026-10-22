@@ -1,0 +1,76 @@
+{
+  "id": "lab4Belyeva02",
+  "name": "02 JavaScript и NoOp — Беляева СДП-ИИ-241",
+  "nodes": [
+    {
+      "id": "8b6d738a-1d60-4c15-8d62-468d4dea6221",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        300
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "7b7add66-a852-4ec4-a62f-87deeced0f71",
+      "name": "Code JavaScript",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        500,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const student = { surname: 'Беляева', group: 'СДП-ИИ-241' };\nconst values = [20, 5, 10];\nlet total = 0;\nfor (let i = 0; i < values.length; i++) {\n  total += values[i];\n}\nlet level;\nif (total >= 30) { level = 'high'; } else { level = 'low'; }\nreturn [{ json: { payload: { ...student, values, total, level }, topic: 'lab4/belyeva/code' } }];"
+      }
+    },
+    {
+      "id": "f44aa17e-489c-4f97-b090-e10ff3b653e8",
+      "name": "NoOp результат",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        800,
+        300
+      ],
+      "parameters": {}
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Code JavaScript",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code JavaScript": {
+      "main": [
+        [
+          {
+            "node": "NoOp результат",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Minsk",
+    "saveManualExecutions": true,
+    "saveDataSuccessExecution": "all",
+    "saveDataErrorExecution": "all"
+  },
+  "pinData": {},
+  "versionId": "9c1a691f-e194-4e7f-a4fc-08b2db13b1de",
+  "tags": []
+}

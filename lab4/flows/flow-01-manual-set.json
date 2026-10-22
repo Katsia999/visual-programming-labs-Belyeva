@@ -1,0 +1,94 @@
+{
+  "id": "lab4Belyeva01",
+  "name": "01 Manual Set Code — Беляева СДП-ИИ-241",
+  "nodes": [
+    {
+      "id": "a62ebf69-3489-489c-ac8f-889d093eb892",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        300
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "be580355-1ff8-4d89-b4ac-7df288aa8cad",
+      "name": "Set фамилия и topic",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        500,
+        300
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "62c96b6e-d2ae-4953-9a4e-8b5e3c906edd",
+              "name": "payload",
+              "value": "Беляева, СДП-ИИ-241",
+              "type": "string"
+            },
+            {
+              "id": "85c7b098-8027-442e-9d70-b6408f4ab9d2",
+              "name": "topic",
+              "value": "lab4/belyeva/basic",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "2a432fd2-b664-451a-949f-e2c7f36ccabf",
+      "name": "Code Debug",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        760,
+        300
+      ],
+      "parameters": {
+        "jsCode": "return $input.all().map(item => { console.log(item.json); return { json: item.json }; });"
+      }
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Set фамилия и topic",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set фамилия и topic": {
+      "main": [
+        [
+          {
+            "node": "Code Debug",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Minsk",
+    "saveManualExecutions": true,
+    "saveDataSuccessExecution": "all",
+    "saveDataErrorExecution": "all"
+  },
+  "pinData": {},
+  "versionId": "d1b151ae-021c-4de4-a1c7-b2c6d0fd11e1",
+  "tags": []
+}
