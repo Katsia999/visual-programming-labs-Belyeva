@@ -14,3 +14,5 @@
 - [Лабораторная 3 — Bubble и CRUD](lab3/README.md)
 
 - [Лабораторная 4 — n8n и Redis](lab4/README.md)
+
+- [Лабораторная 5 — чат-бот Typebot](lab5/README.md)
