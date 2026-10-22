@@ -1,0 +1,87 @@
+{
+  "id": "lab4Belyeva05",
+  "name": "05 HTTP GET JSON — Беляева СДП-ИИ-241",
+  "nodes": [
+    {
+      "id": "98ce4ecb-d7ec-4e05-b835-5b3e2850a353",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        300
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "65f38707-9ce1-45e4-822d-5e9f9250cf0f",
+      "name": "HTTP Request GET",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [
+        500,
+        300
+      ],
+      "parameters": {
+        "method": "GET",
+        "url": "https://official-joke-api.appspot.com/random_joke",
+        "options": {
+          "response": {
+            "response": {
+              "responseFormat": "json"
+            }
+          },
+          "timeout": 30000
+        }
+      }
+    },
+    {
+      "id": "a3aa9ddc-aa16-4d2e-9980-c01afd52fd17",
+      "name": "Code ответ API",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        760,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const response = $input.first().json;\nif (typeof response.setup !== 'string' || typeof response.punchline !== 'string') {\n  throw new Error('API вернул неожиданный формат');\n}\nreturn [{ json: { student: 'Беляева', group: 'СДП-ИИ-241', topic: 'lab4/belyeva/http', payload: response } }];"
+      }
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "HTTP Request GET",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "HTTP Request GET": {
+      "main": [
+        [
+          {
+            "node": "Code ответ API",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Minsk",
+    "saveManualExecutions": true,
+    "saveDataSuccessExecution": "all",
+    "saveDataErrorExecution": "all"
+  },
+  "pinData": {},
+  "versionId": "d9a96c89-545b-410e-80f4-d030b85fffbf",
+  "tags": []
+}

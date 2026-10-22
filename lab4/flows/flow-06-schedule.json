@@ -1,0 +1,63 @@
+{
+  "id": "lab4Belyeva06",
+  "name": "06 Расписание раз в минуту — Беляева СДП-ИИ-241",
+  "nodes": [
+    {
+      "id": "7bebaeff-eb2c-49c2-9a18-1f0cd5fd7ae3",
+      "name": "Schedule Trigger каждую минуту",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [
+        350,
+        300
+      ],
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "minutes",
+              "minutesInterval": 1
+            }
+          ]
+        }
+      }
+    },
+    {
+      "id": "69c559a8-2bcd-4d00-9a28-2de6589f0d14",
+      "name": "Code текущее время",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        650,
+        300
+      ],
+      "parameters": {
+        "jsCode": "return [{ json: {\n  student: 'Беляева', group: 'СДП-ИИ-241', topic: 'lab4/belyeva/schedule',\n  timestamp: $now.toISO(), timezone: 'Europe/Minsk', trigger: $input.first().json\n} }];"
+      }
+    }
+  ],
+  "connections": {
+    "Schedule Trigger каждую минуту": {
+      "main": [
+        [
+          {
+            "node": "Code текущее время",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Minsk",
+    "saveManualExecutions": true,
+    "saveDataSuccessExecution": "all",
+    "saveDataErrorExecution": "all"
+  },
+  "pinData": {},
+  "versionId": "bd996c09-4513-40e0-9877-19db1a5c8ec3",
+  "tags": []
+}
