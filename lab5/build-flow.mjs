@@ -57,3 +57,39 @@ bot.settings = {
 for (const k of ['id','workspaceId','folderId','createdAt','updatedAt','publicId','customDomain','resultsTablePreferences','whatsAppCredentialsId']) delete bot[k];
 fs.writeFileSync(new URL('./exports/flow-01-belyeva-ru.json', import.meta.url), JSON.stringify(bot,null,2)+'\n');
 console.log('Сохранён перевод официального шаблона Lead Generation.');
+
+const addText = (id, value) => ({ id, type: 'text', content: text(value) });
+const connect = (id, blockId, groupId, itemId) => {
+  bot.edges.push({ id, from: { blockId, ...(itemId ? { itemId } : {}) }, to: { groupId } });
+};
+bot.variables.push(...[
+  ['varbelyevagroup','Группа'], ['varbelyevaroute','Маршрут'],
+].map(([id,name]) => ({ id,name,isSessionVariable:true })));
+// Вставляем новые шаги между именем и почтой, сохраняя исходные блоки шаблона.
+bot.edges.find(e => e.id === '4tYbERpi5Po4goVgt6rWXg').to.groupId = 'groupbelyevastudent';
+bot.groups.push(
+  { id:'groupbelyevastudent', title:'02а Учебная группа', graphCoordinates:{x:340,y:490}, blocks:[
+    addText('blockbelyevagroupask','Укажите вашу группу. Например, СДП-ИИ-241.'),
+    {id:'blockbelyevagroupinput',type:'text input',outgoingEdgeId:'edgebelyevacheck',options:{variableId:'varbelyevagroup',labels:{placeholder:'Например, СДП-ИИ-241',button:'Проверить группу'}}},
+  ]},
+  { id:'groupbelyevacondition',title:'02б Проверка группы',graphCoordinates:{x:680,y:490},blocks:[
+    {id:'blockbelyevacondition',type:'Condition',outgoingEdgeId:'edgebelyevaother',items:[
+      {id:'itembelyevamatch',outgoingEdgeId:'edgebelyevamatch',content:{comparisons:[{id:'comparisonbelyeva',variableId:'varbelyevagroup',comparisonOperator:'Equal to',value:'СДП-ИИ-241'}]}}
+    ]}
+  ]},
+  {id:'groupbelyevasame',title:'02в Своя группа',graphCoordinates:{x:1020,y:490},blocks:[
+    addText('blockbelyevasame','Вы из группы СДП-ИИ-241. Подготовим консультацию по нашей программе.'),
+    {id:'blockbelyevasameroute',type:'Set variable',outgoingEdgeId:'edgebelyevasameemail',options:{variableId:'varbelyevaroute',expressionToEvaluate:'Своя группа'}}
+  ]},
+  {id:'groupbelyevaother',title:'02г Другая группа',graphCoordinates:{x:1020,y:810},blocks:[
+    addText('blockbelyevaother','Вы указали другую группу: {{Группа}}. Заявку тоже можно оставить; укажите в вопросе свою учебную программу.'),
+    {id:'blockbelyevaotherroute',type:'Set variable',outgoingEdgeId:'edgebelyevaotheremail',options:{variableId:'varbelyevaroute',expressionToEvaluate:'Другая группа'}}
+  ]}
+);
+connect('edgebelyevacheck','blockbelyevagroupinput','groupbelyevacondition');
+connect('edgebelyevamatch','blockbelyevacondition','groupbelyevasame','itembelyevamatch');
+connect('edgebelyevaother','blockbelyevacondition','groupbelyevaother');
+connect('edgebelyevasameemail','blockbelyevasameroute',groups.Email.id);
+connect('edgebelyevaotheremail','blockbelyevaotherroute',groups.Email.id);
+fs.writeFileSync(new URL('./exports/flow-02-belyeva-condition.json',import.meta.url),JSON.stringify(bot,null,2)+'\n');
+console.log('Добавлены ввод группы, Condition и две ветви.');
