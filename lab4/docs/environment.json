@@ -1,0 +1,40 @@
+{
+  "n8nVersion": "2.44.6",
+  "checkedAt": "2026-10-22T18:02:25.4478254Z",
+  "redisVersion": "7.4.11",
+  "redisAfterDelete": {
+    "value": null,
+    "exists": 0,
+    "key": "belyeva"
+  },
+  "restartedSuccessfully": true,
+  "n8nMounts": [
+    {
+      "Type": "bind",
+      "Source": "D:\\VP_labs\\visual-programming-labs-Belyeva\\lab4\\runtime\\data",
+      "Destination": "/data",
+      "RW": true
+    },
+    {
+      "Type": "bind",
+      "Source": "D:\\VP_labs\\visual-programming-labs-Belyeva\\lab4\\runtime\\n8n",
+      "Destination": "/home/node/.n8n",
+      "RW": true
+    }
+  ],
+  "redisBeforeDelete": {
+    "ttl": -1,
+    "value": "Беляева, СДП-ИИ-241 — лабораторная 4",
+    "exists": 1,
+    "key": "belyeva"
+  },
+  "dockerEngineVersion": "29.8.2",
+  "redisMounts": [
+    {
+      "Type": "bind",
+      "Source": "D:\\VP_labs\\visual-programming-labs-Belyeva\\lab4\\runtime\\redis",
+      "Destination": "/data",
+      "RW": true
+    }
+  ]
+}

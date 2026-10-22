@@ -1,6 +1,11 @@
 {
+  "updatedAt": "2026-10-22T17:49:49.057Z",
+  "createdAt": "2026-10-22T17:49:49.057Z",
   "id": "lab4Belyeva06",
   "name": "06 Расписание раз в минуту — Беляева СДП-ИИ-241",
+  "description": null,
+  "active": true,
+  "isArchived": false,
   "nodes": [
     {
       "id": "7bebaeff-eb2c-49c2-9a18-1f0cd5fd7ae3",
@@ -49,7 +54,6 @@
       ]
     }
   },
-  "active": false,
   "settings": {
     "executionOrder": "v1",
     "timezone": "Europe/Minsk",
@@ -57,7 +61,47 @@
     "saveDataSuccessExecution": "all",
     "saveDataErrorExecution": "all"
   },
+  "staticData": {
+    "node:Schedule Trigger каждую минуту": {
+      "recurrenceRules": [
+        null
+      ],
+      "recurrenceRuleSignatures": [
+        null
+      ]
+    }
+  },
+  "meta": null,
+  "nodeGroups": [],
   "pinData": {},
-  "versionId": "bd996c09-4513-40e0-9877-19db1a5c8ec3",
-  "tags": []
+  "versionId": "a0fbd25c-de9c-4008-bba4-d835ac1543f1",
+  "activeVersionId": "a0fbd25c-de9c-4008-bba4-d835ac1543f1",
+  "versionCounter": 1,
+  "triggerCount": 1,
+  "sourceWorkflowId": null,
+  "tags": [],
+  "shared": [
+    {
+      "updatedAt": "2026-10-22T17:49:49.063Z",
+      "createdAt": "2026-10-22T17:49:49.063Z",
+      "role": "workflow:owner",
+      "workflowId": "lab4Belyeva06",
+      "projectId": "fewldYxPcNBireLS",
+      "project": {
+        "updatedAt": "2026-10-22T17:49:20.274Z",
+        "createdAt": "2026-10-22T17:48:09.879Z",
+        "id": "fewldYxPcNBireLS",
+        "name": "Екатерина Беляева <belyeva_ev_24@mf.grsu.by>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "customTelemetryTags": [],
+        "creatorId": "7d6ed32d-711d-4931-8b03-63ce22cbf84b"
+      }
+    }
+  ],
+  "versionMetadata": {
+    "name": "Расписание Беляева каждую минуту",
+    "description": ""
+  }
 }

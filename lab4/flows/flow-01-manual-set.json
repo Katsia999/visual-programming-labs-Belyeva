@@ -1,6 +1,11 @@
 {
+  "updatedAt": "2026-10-22T17:49:48.959Z",
+  "createdAt": "2026-10-22T17:49:48.959Z",
   "id": "lab4Belyeva01",
   "name": "01 Manual Set Code — Беляева СДП-ИИ-241",
+  "description": null,
+  "active": false,
+  "isArchived": false,
   "nodes": [
     {
       "id": "a62ebf69-3489-489c-ac8f-889d093eb892",
@@ -80,7 +85,6 @@
       ]
     }
   },
-  "active": false,
   "settings": {
     "executionOrder": "v1",
     "timezone": "Europe/Minsk",
@@ -88,7 +92,38 @@
     "saveDataSuccessExecution": "all",
     "saveDataErrorExecution": "all"
   },
+  "staticData": null,
+  "meta": null,
+  "nodeGroups": [],
   "pinData": {},
-  "versionId": "d1b151ae-021c-4de4-a1c7-b2c6d0fd11e1",
-  "tags": []
+  "versionId": "61beb1e6-2499-48de-bfa9-d50778b2486b",
+  "activeVersionId": null,
+  "versionCounter": 1,
+  "triggerCount": 0,
+  "sourceWorkflowId": null,
+  "tags": [],
+  "shared": [
+    {
+      "updatedAt": "2026-10-22T17:49:48.985Z",
+      "createdAt": "2026-10-22T17:49:48.985Z",
+      "role": "workflow:owner",
+      "workflowId": "lab4Belyeva01",
+      "projectId": "fewldYxPcNBireLS",
+      "project": {
+        "updatedAt": "2026-10-22T17:49:20.274Z",
+        "createdAt": "2026-10-22T17:48:09.879Z",
+        "id": "fewldYxPcNBireLS",
+        "name": "Екатерина Беляева <belyeva_ev_24@mf.grsu.by>",
+        "type": "personal",
+        "icon": null,
+        "description": null,
+        "customTelemetryTags": [],
+        "creatorId": "7d6ed32d-711d-4931-8b03-63ce22cbf84b"
+      }
+    }
+  ],
+  "versionMetadata": {
+    "name": null,
+    "description": null
+  }
 }
