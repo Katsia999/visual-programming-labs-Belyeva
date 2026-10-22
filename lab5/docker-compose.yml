@@ -1,0 +1,48 @@
+name: lab5-belyeva
+x-typebot: &typebot
+  restart: unless-stopped
+  env_file: .env
+  depends_on:
+    db:
+      condition: service_healthy
+    redis:
+      condition: service_healthy
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: typebot
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - ./runtime/postgres:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, 'pg_isready -U postgres']
+      interval: 5s
+      timeout: 5s
+      retries: 20
+  redis:
+    image: redis:7.4-alpine
+    restart: unless-stopped
+    volumes:
+      - ./runtime/redis:/data
+    healthcheck:
+      test: [CMD, redis-cli, ping]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+  mail:
+    image: axllent/mailpit:v1.27
+    restart: unless-stopped
+    ports:
+      - 127.0.0.1:8025:8025
+  builder:
+    <<: *typebot
+    image: baptistearno/typebot-builder:3.19.1
+    ports:
+      - 127.0.0.1:8080:3000
+  viewer:
+    <<: *typebot
+    image: baptistearno/typebot-viewer:3.19.1
+    ports:
+      - 127.0.0.1:8081:3000
