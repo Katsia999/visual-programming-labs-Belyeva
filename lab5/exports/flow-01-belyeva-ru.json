@@ -1,0 +1,389 @@
+{
+  "version": "6.1",
+  "name": "lab5-Беляева-СДП-ИИ-241-консультация",
+  "events": [
+    {
+      "id": "k6kY6gwRE6noPoYQNGzgUq",
+      "outgoingEdgeId": "oNvqaqNExdSH2kKEhKZHuE",
+      "graphCoordinates": {
+        "x": 0,
+        "y": 0
+      },
+      "type": "start"
+    }
+  ],
+  "groups": [
+    {
+      "id": "kinRXxYop2X4d7F9qt8WNB",
+      "title": "01 Приветствие Беляева",
+      "graphCoordinates": {
+        "x": 1,
+        "y": 148
+      },
+      "blocks": [
+        {
+          "id": "sc1y8VwDabNJgiVTBi4qtif",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Здравствуйте! Это бот Беляевой Екатерины, СДП-ИИ-241. Помогу оформить заявку на консультацию по лабораторным."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "sbjZWLJGVkHAkDqS4JQeGow",
+          "outgoingEdgeId": "i51YhHpk1dtSyduFNf5Wim",
+          "type": "choice input",
+          "items": [
+            {
+              "id": "hQw2zbp7FDX7XYK9cFpbgC",
+              "content": "Начать заявку"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o4SH1UtKANnW5N5D67oZUz",
+      "title": "03 Почта",
+      "graphCoordinates": {
+        "x": 669,
+        "y": 141
+      },
+      "blocks": [
+        {
+          "id": "sxeYubYN6XzhAfG7m9Fivhc",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Рада знакомству, {{Имя}}!"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "scQ5kduafAtfP9T8SHUJnGi",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Укажите учебную почту для ответа. Для проверки можно использовать адрес на example.com."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "snbsad18Bgry8yZ8DZCfdFD",
+          "outgoingEdgeId": "w3MiN1Ct38jT5NykVsgmb5",
+          "type": "email input",
+          "options": {
+            "variableId": "v3VFChNVSCXQ2rXv4DrJ8Ah",
+            "labels": {
+              "placeholder": "Например, belyeva@example.com",
+              "button": "Продолжить"
+            },
+            "retryMessageContent": "Введите корректную почту, например belyeva@example.com."
+          }
+        }
+      ]
+    },
+    {
+      "id": "q5dAhqSTCaNdiGSJm9B9Rw",
+      "title": "02 Имя",
+      "graphCoordinates": {
+        "x": 340,
+        "y": 143
+      },
+      "blocks": [
+        {
+          "id": "sgtE2Sy7cKykac9B223Kq9R",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Как к вам обращаться?"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "sqEsMo747LTDnY9FjQcEwUv",
+          "outgoingEdgeId": "4tYbERpi5Po4goVgt6rWXg",
+          "type": "text input",
+          "options": {
+            "variableId": "giiLFGw5xXBCHzvp1qAbdX",
+            "labels": {
+              "placeholder": "Например, Екатерина Беляева",
+              "button": "Продолжить"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "fKqRz7iswk7ULaj5PJocZL",
+      "title": "04 Тема консультации",
+      "graphCoordinates": {
+        "x": 1002,
+        "y": 144
+      },
+      "blocks": [
+        {
+          "id": "su7HceVXWyTCzi2vv3m4QbK",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "По какой теме нужна консультация?"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "s5VQGsVF4hQgziQsXVdwPDW",
+          "outgoingEdgeId": "ohTRakmcYJ7GdFWRZrWRjk",
+          "type": "choice input",
+          "items": [
+            {
+              "id": "fnLCBF4NdraSwcubnBhk8H",
+              "content": "Node-RED и MQTT"
+            },
+            {
+              "id": "a782h8ynMouY84QjH7XSnR",
+              "content": "Bubble и CRUD"
+            },
+            {
+              "id": "jGvh94zBByvVFpSS3w97zY",
+              "content": "n8n и Redis"
+            },
+            {
+              "id": "6PRLbKUezuFmwWtLVbvAQ7",
+              "content": "Typebot и чат-боты"
+            }
+          ],
+          "options": {
+            "variableId": "varbelyevatopic"
+          }
+        }
+      ]
+    },
+    {
+      "id": "7qHBEyCMvKEJryBHzPmHjV",
+      "title": "05 Вопрос",
+      "graphCoordinates": {
+        "x": 1337,
+        "y": 145
+      },
+      "blocks": [
+        {
+          "id": "sqR8Sz9gW21aUYKtUikq7qZ",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Опишите вопрос и укажите номер лабораторной."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "sqFy2G3C1mh9p6s3QBdSS5x",
+          "outgoingEdgeId": "sH5nUssG2XQbm6ZidGv9BY",
+          "type": "text input",
+          "options": {
+            "isLong": true,
+            "labels": {
+              "placeholder": "Ваш вопрос по лабораторной",
+              "button": "Продолжить"
+            },
+            "variableId": "varbelyevaquestion"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vF7AD7zSAj7SNvN3gr9N94",
+      "title": "06 Итог заявки",
+      "graphCoordinates": {
+        "x": 1668,
+        "y": 143
+      },
+      "blocks": [
+        {
+          "id": "seLegenCgUwMopRFeAefqZ7",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Заявка сохранена в результатах бота."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "s779Q1y51aVaDUJVrFb16vv",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "{{Имя}}, тема: {{Тема}}. Почта для ответа: {{Почта}}. Это учебная демонстрация: письмо и уведомление преподавателю не отправляются."
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "oNvqaqNExdSH2kKEhKZHuE",
+      "from": {
+        "eventId": "k6kY6gwRE6noPoYQNGzgUq"
+      },
+      "to": {
+        "groupId": "kinRXxYop2X4d7F9qt8WNB"
+      }
+    },
+    {
+      "id": "i51YhHpk1dtSyduFNf5Wim",
+      "from": {
+        "blockId": "sbjZWLJGVkHAkDqS4JQeGow"
+      },
+      "to": {
+        "groupId": "q5dAhqSTCaNdiGSJm9B9Rw"
+      }
+    },
+    {
+      "id": "4tYbERpi5Po4goVgt6rWXg",
+      "from": {
+        "blockId": "sqEsMo747LTDnY9FjQcEwUv"
+      },
+      "to": {
+        "groupId": "o4SH1UtKANnW5N5D67oZUz"
+      }
+    },
+    {
+      "id": "w3MiN1Ct38jT5NykVsgmb5",
+      "from": {
+        "blockId": "snbsad18Bgry8yZ8DZCfdFD"
+      },
+      "to": {
+        "groupId": "fKqRz7iswk7ULaj5PJocZL"
+      }
+    },
+    {
+      "id": "ohTRakmcYJ7GdFWRZrWRjk",
+      "from": {
+        "blockId": "s5VQGsVF4hQgziQsXVdwPDW"
+      },
+      "to": {
+        "groupId": "7qHBEyCMvKEJryBHzPmHjV"
+      }
+    },
+    {
+      "id": "sH5nUssG2XQbm6ZidGv9BY",
+      "from": {
+        "blockId": "sqFy2G3C1mh9p6s3QBdSS5x"
+      },
+      "to": {
+        "groupId": "vF7AD7zSAj7SNvN3gr9N94"
+      }
+    }
+  ],
+  "variables": [
+    {
+      "id": "giiLFGw5xXBCHzvp1qAbdX",
+      "name": "Имя",
+      "isSessionVariable": true
+    },
+    {
+      "id": "v3VFChNVSCXQ2rXv4DrJ8Ah",
+      "name": "Почта",
+      "isSessionVariable": true
+    },
+    {
+      "id": "varbelyevatopic",
+      "name": "Тема",
+      "isSessionVariable": true
+    },
+    {
+      "id": "varbelyevaquestion",
+      "name": "Вопрос",
+      "isSessionVariable": true
+    }
+  ],
+  "theme": {},
+  "selectedThemeTemplateId": null,
+  "settings": {
+    "general": {
+      "isBrandingEnabled": true,
+      "isNewResultOnRefreshEnabled": true,
+      "systemMessages": {
+        "invalidMessage": "Проверьте введённые данные и попробуйте ещё раз.",
+        "botClosed": "Бот сейчас закрыт.",
+        "networkErrorTitle": "Ошибка соединения",
+        "networkErrorMessage": "Проверьте соединение и повторите попытку.",
+        "popupBlockedTitle": "Окно заблокировано",
+        "popupBlockedDescription": "Разрешите открыть окно, чтобы продолжить.",
+        "popupBlockedButtonLabel": "Открыть окно",
+        "fileUploadError": "Не удалось загрузить файл.",
+        "fileUploadSizeError": "Файл слишком большой.",
+        "whatsAppPictureChoiceSelectLabel": "Выбрать"
+      }
+    },
+    "typingEmulation": {
+      "enabled": false
+    },
+    "metadata": {
+      "title": "Консультация по лабораторным — Беляева",
+      "description": "Учебный чат-бот Беляевой Екатерины, СДП-ИИ-241. Заявка на консультацию по визуальному программированию.",
+      "allowIndexing": false
+    }
+  },
+  "icon": "🤝",
+  "isArchived": false,
+  "isClosed": false
+}

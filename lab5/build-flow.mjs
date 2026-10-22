@@ -1,0 +1,59 @@
+import fs from 'node:fs';
+
+const bot = JSON.parse(fs.readFileSync(new URL('./exports/template-lead-gen-original.json', import.meta.url)));
+const text = value => ({ richText: [{ type: 'p', children: [{ text: value }] }] });
+const groups = Object.fromEntries(bot.groups.map(g => [g.title, g]));
+const messages = {
+  Welcome: ['Здравствуйте! Это бот Беляевой Екатерины, СДП-ИИ-241. Помогу оформить заявку на консультацию по лабораторным.'],
+  Name: ['Как к вам обращаться?'],
+  Email: ['Рада знакомству, {{Имя}}!', 'Укажите учебную почту для ответа. Для проверки можно использовать адрес на example.com.'],
+  Services: ['По какой теме нужна консультация?'],
+  'Additional information': ['Опишите вопрос и укажите номер лабораторной.'],
+  Bye: ['Заявка сохранена в результатах бота.', '{{Имя}}, тема: {{Тема}}. Почта для ответа: {{Почта}}. Это учебная демонстрация: письмо и уведомление преподавателю не отправляются.'],
+};
+const titles = { Welcome: '01 Приветствие Беляева', Name: '02 Имя', Email: '03 Почта', Services: '04 Тема консультации', 'Additional information': '05 Вопрос', Bye: '06 Итог заявки' };
+for (const [oldTitle, group] of Object.entries(groups)) {
+  let i = 0;
+  group.title = titles[oldTitle];
+  group.blocks = group.blocks.filter(b => b.type !== 'image');
+  for (const block of group.blocks) {
+    if (block.type === 'text') block.content = text(messages[oldTitle][i++]);
+    if (block.type === 'text input' || block.type === 'email input') {
+      block.options ??= {};
+      block.options.labels = { placeholder: oldTitle === 'Name' ? 'Например, Екатерина Беляева' : oldTitle === 'Email' ? 'Например, belyeva@example.com' : 'Ваш вопрос по лабораторной', button: 'Продолжить' };
+      if (block.type === 'email input') block.options.retryMessageContent = 'Введите корректную почту, например belyeva@example.com.';
+    }
+  }
+}
+groups.Welcome.blocks.find(b => b.type === 'choice input').items[0].content = 'Начать заявку';
+const topics = groups.Services.blocks.find(b => b.type === 'choice input');
+['Node-RED и MQTT', 'Bubble и CRUD', 'n8n и Redis', 'Typebot и чат-боты'].forEach((s,i) => topics.items[i].content = s);
+bot.variables[0].name = 'Имя';
+bot.variables[1].name = 'Почта';
+bot.variables.push({ id: 'varbelyevatopic', name: 'Тема', isSessionVariable: true }, { id: 'varbelyevaquestion', name: 'Вопрос', isSessionVariable: true });
+topics.options = { variableId: 'varbelyevatopic' };
+groups['Additional information'].blocks.find(b => b.type === 'text input').options.variableId = 'varbelyevaquestion';
+bot.name = 'lab5-Беляева-СДП-ИИ-241-консультация';
+bot.settings = {
+  general: {
+    isBrandingEnabled: true,
+    isNewResultOnRefreshEnabled: true,
+    systemMessages: {
+      invalidMessage: 'Проверьте введённые данные и попробуйте ещё раз.',
+      botClosed: 'Бот сейчас закрыт.',
+      networkErrorTitle: 'Ошибка соединения',
+      networkErrorMessage: 'Проверьте соединение и повторите попытку.',
+      popupBlockedTitle: 'Окно заблокировано',
+      popupBlockedDescription: 'Разрешите открыть окно, чтобы продолжить.',
+      popupBlockedButtonLabel: 'Открыть окно',
+      fileUploadError: 'Не удалось загрузить файл.',
+      fileUploadSizeError: 'Файл слишком большой.',
+      whatsAppPictureChoiceSelectLabel: 'Выбрать',
+    },
+  },
+  typingEmulation: { enabled: false },
+  metadata: { title: 'Консультация по лабораторным — Беляева', description: 'Учебный чат-бот Беляевой Екатерины, СДП-ИИ-241. Заявка на консультацию по визуальному программированию.', allowIndexing: false },
+};
+for (const k of ['id','workspaceId','folderId','createdAt','updatedAt','publicId','customDomain','resultsTablePreferences','whatsAppCredentialsId']) delete bot[k];
+fs.writeFileSync(new URL('./exports/flow-01-belyeva-ru.json', import.meta.url), JSON.stringify(bot,null,2)+'\n');
+console.log('Сохранён перевод официального шаблона Lead Generation.');
