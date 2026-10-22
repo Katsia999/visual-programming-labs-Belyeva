@@ -6,3 +6,6 @@ lab2/.env
 lab2/node_modules/
 lab2/docs/defense.md
 lab3/docs/defense.md
+lab4/runtime/
+lab4/.env
+lab4/docs/defense.md
