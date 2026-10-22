@@ -176,6 +176,7 @@ Condition сравнивает «Группа» с `СДП-ИИ-241` опера�
 | [6d37cf6](https://github.com/Katsia999/visual-programming-labs-Belyeva/commit/6d37cf6c69a777f0295e9b3a6590640f9485b26b) | 22.10.2026 | Подключила API времени и настроила оформление бота |
 | [ecacb4f](https://github.com/Katsia999/visual-programming-labs-Belyeva/commit/ecacb4f4e9842eed9187ff54c996ff6e3c4164a2) | 22.10.2026 | Проверила импорт и публикацию бота в Typebot |
 | [f6deb6a](https://github.com/Katsia999/visual-programming-labs-Belyeva/commit/f6deb6a0203731395896c2bfa78f1a6983a49251) | 22.10.2026 | Добавила скриншоты диалогов и проверку сохранения заявок |
+| [f6792a0](https://github.com/Katsia999/visual-programming-labs-Belyeva/commit/f6792a077646a79d6ef962e526e2a87d94af006b) | 22.10.2026 | Оформила отчёт и инструкции к пятой лабораторной |
 
 Отчёт и итоговая проверка требований сохранены отдельным завершающим коммитом. Требование не менее шести осмысленных коммитов выполнено.
 
