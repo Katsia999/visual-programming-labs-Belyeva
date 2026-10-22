@@ -1,0 +1,184 @@
+{
+  "checkedAt": "2026-10-22T21:57:23.6191019+03:00",
+  "afterRestart": true,
+  "checks": {
+    "allDialogsCompleted": true,
+    "sameGroupBranch": true,
+    "otherGroupBranch": true,
+    "httpSuccessBranch": true,
+    "httpFailureBranch": true,
+    "correctEmailSaved": true,
+    "invalidEmailNotSaved": true,
+    "workingApiRestored": true,
+    "sameResultIdsAfterRestart": true
+  },
+  "allPassed": true,
+  "results": [
+    {
+      "id": "wn30z7vrivsbe2baw9a0m8ss",
+      "completed": true,
+      "variables": [
+        {
+          "id": "giiLFGw5xXBCHzvp1qAbdX",
+          "name": "Имя",
+          "value": "Екатерина Беляева",
+          "isSessionVariable": false
+        },
+        {
+          "id": "varbelyevagroup",
+          "name": "Группа",
+          "value": "СДП-ИИ-241",
+          "isSessionVariable": false
+        },
+        {
+          "id": "v3VFChNVSCXQ2rXv4DrJ8Ah",
+          "name": "Почта",
+          "value": "belyeva@example.com",
+          "isSessionVariable": false
+        },
+        {
+          "id": "varbelyevatopic",
+          "name": "Тема",
+          "value": "Typebot и чат-боты",
+          "isSessionVariable": false
+        },
+        {
+          "id": "varbelyevaquestion",
+          "name": "Вопрос",
+          "value": "Беляева, СДП-ИИ-241: как работают Condition и переменные в лабораторной 5?",
+          "isSessionVariable": false
+        }
+      ],
+      "history": [
+        {
+          "blockId": "blockbelyevasameroute",
+          "value": "Своя группа"
+        },
+        {
+          "blockId": "blockbelyevahttp",
+          "value": "2026-10-22T21:39:26.6228654"
+        }
+      ],
+      "edges": [
+        "edgebelyevamatch",
+        "edgebelyevatimeok"
+      ],
+      "logs": [
+        {
+          "status": "success",
+          "description": "Webhook successfuly executed."
+        }
+      ]
+    },
+    {
+      "id": "ra6zgc9eu4uyk90n5dellay9",
+      "completed": true,
+      "variables": [
+        {
+          "id": "giiLFGw5xXBCHzvp1qAbdX",
+          "name": "Имя",
+          "value": "Беляева — тест другой группы",
+          "isSessionVariable": false
+        },
+        {
+          "id": "varbelyevagroup",
+          "name": "Группа",
+          "value": "СДП-ИИ-242",
+          "isSessionVariable": false
+        },
+        {
+          "id": "v3VFChNVSCXQ2rXv4DrJ8Ah",
+          "name": "Почта",
+          "value": "belyeva.other@example.com",
+          "isSessionVariable": false
+        },
+        {
+          "id": "varbelyevatopic",
+          "name": "Тема",
+          "value": "n8n и Redis",
+          "isSessionVariable": false
+        },
+        {
+          "id": "varbelyevaquestion",
+          "name": "Вопрос",
+          "value": "Беляева, тест СДП-ИИ-242: нужна консультация по Redis и лабораторной 4.",
+          "isSessionVariable": false
+        }
+      ],
+      "history": [
+        {
+          "blockId": "blockbelyevaotherroute",
+          "value": "Другая группа"
+        },
+        {
+          "blockId": "blockbelyevahttp",
+          "value": "2026-10-22T21:41:18.803622"
+        }
+      ],
+      "edges": [
+        "edgebelyevatimeok"
+      ],
+      "logs": [
+        {
+          "status": "success",
+          "description": "Webhook successfuly executed."
+        }
+      ]
+    },
+    {
+      "id": "xyec0ab5cobsth7n2zzhiu2h",
+      "completed": true,
+      "variables": [
+        {
+          "id": "giiLFGw5xXBCHzvp1qAbdX",
+          "name": "Имя",
+          "value": "Беляева — проверка ошибки API",
+          "isSessionVariable": false
+        },
+        {
+          "id": "varbelyevagroup",
+          "name": "Группа",
+          "value": "СДП-ИИ-241",
+          "isSessionVariable": false
+        },
+        {
+          "id": "v3VFChNVSCXQ2rXv4DrJ8Ah",
+          "name": "Почта",
+          "value": "belyeva.failure@example.com",
+          "isSessionVariable": false
+        },
+        {
+          "id": "varbelyevatopic",
+          "name": "Тема",
+          "value": "Typebot и чат-боты",
+          "isSessionVariable": false
+        },
+        {
+          "id": "varbelyevaquestion",
+          "name": "Вопрос",
+          "value": "Беляева, СДП-ИИ-241: проверка сохранения заявки при HTTP 404.",
+          "isSessionVariable": false
+        }
+      ],
+      "history": [
+        {
+          "blockId": "blockbelyevasameroute",
+          "value": "Своя группа"
+        },
+        {
+          "blockId": "blockbelyevahttp",
+          "value": null
+        }
+      ],
+      "edges": [
+        "edgebelyevamatch"
+      ],
+      "logs": [
+        {
+          "status": "error",
+          "description": "Webhook returned an error."
+        }
+      ]
+    }
+  ]
+}
