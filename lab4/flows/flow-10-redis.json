@@ -1,0 +1,119 @@
+{
+  "id": "lab4Belyeva10",
+  "name": "10 Redis удаление и отсутствие — Беляева СДП-ИИ-241",
+  "nodes": [
+    {
+      "id": "db2b8056-8c35-475f-ab32-f11c4f3e72d3",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        300
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "bd6ed42d-173e-4806-97a0-041396b340b9",
+      "name": "Redis Delete belyeva",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        450,
+        300
+      ],
+      "parameters": {
+        "operation": "delete",
+        "key": "belyeva"
+      },
+      "credentials": {
+        "redis": {
+          "id": "lab4-belyeva-redis",
+          "name": "Redis Беляева СДП-ИИ-241"
+        }
+      }
+    },
+    {
+      "id": "399c9829-7746-4a89-90da-d2592353ef29",
+      "name": "Redis Get после удаления",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        680,
+        300
+      ],
+      "parameters": {
+        "operation": "get",
+        "key": "belyeva",
+        "propertyName": "value",
+        "keyType": "string",
+        "options": {}
+      },
+      "credentials": {
+        "redis": {
+          "id": "lab4-belyeva-redis",
+          "name": "Redis Беляева СДП-ИИ-241"
+        }
+      }
+    },
+    {
+      "id": "9e7ffc54-5a04-43aa-abdd-59c661f44118",
+      "name": "Code проверка отсутствия",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        920,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const value = $input.first().json.value;\nif (value !== null) throw new Error('Ключ belyeva ещё существует');\nreturn [{ json: { student: 'Беляева', group: 'СДП-ИИ-241', key: 'belyeva', value, exists: false, deleted: true } }];"
+      }
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Redis Delete belyeva",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis Delete belyeva": {
+      "main": [
+        [
+          {
+            "node": "Redis Get после удаления",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis Get после удаления": {
+      "main": [
+        [
+          {
+            "node": "Code проверка отсутствия",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Minsk",
+    "saveManualExecutions": true,
+    "saveDataSuccessExecution": "all",
+    "saveDataErrorExecution": "all"
+  },
+  "pinData": {},
+  "versionId": "b8c1b738-37a7-4074-bbc0-aa8f23787162",
+  "tags": []
+}

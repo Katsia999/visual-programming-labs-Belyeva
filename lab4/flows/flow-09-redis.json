@@ -1,0 +1,98 @@
+{
+  "id": "lab4Belyeva09",
+  "name": "09 Redis создание и чтение — Беляева СДП-ИИ-241",
+  "nodes": [
+    {
+      "id": "c6a7ec18-51bb-485a-81f4-71f1c429f24e",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        300
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "6fd11673-d14e-447c-860d-9833d56f7429",
+      "name": "Redis Set belyeva",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        500,
+        300
+      ],
+      "parameters": {
+        "operation": "set",
+        "key": "belyeva",
+        "value": "Беляева, СДП-ИИ-241 — лабораторная 4",
+        "keyType": "string",
+        "expire": false
+      },
+      "credentials": {
+        "redis": {
+          "id": "lab4-belyeva-redis",
+          "name": "Redis Беляева СДП-ИИ-241"
+        }
+      }
+    },
+    {
+      "id": "b3b516c0-084f-47b9-b4cb-ee68dd39651c",
+      "name": "Redis Get belyeva",
+      "type": "n8n-nodes-base.redis",
+      "typeVersion": 1,
+      "position": [
+        760,
+        300
+      ],
+      "parameters": {
+        "operation": "get",
+        "key": "belyeva",
+        "propertyName": "value",
+        "keyType": "string",
+        "options": {}
+      },
+      "credentials": {
+        "redis": {
+          "id": "lab4-belyeva-redis",
+          "name": "Redis Беляева СДП-ИИ-241"
+        }
+      }
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Redis Set belyeva",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Redis Set belyeva": {
+      "main": [
+        [
+          {
+            "node": "Redis Get belyeva",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Minsk",
+    "saveManualExecutions": true,
+    "saveDataSuccessExecution": "all",
+    "saveDataErrorExecution": "all"
+  },
+  "pinData": {},
+  "versionId": "15db69d2-a4a3-43b9-88dc-53d233c44741",
+  "tags": []
+}
