@@ -781,7 +781,7 @@
   "selectedThemeTemplateId": null,
   "settings": {
     "general": {
-      "isBrandingEnabled": true,
+      "isBrandingEnabled": false,
       "isNewResultOnRefreshEnabled": true,
       "systemMessages": {
         "invalidMessage": "Проверьте введённые данные и попробуйте ещё раз.",
@@ -807,5 +807,6 @@
   },
   "icon": "🎓",
   "isArchived": false,
-  "isClosed": false
+  "isClosed": false,
+  "folderId": null
 }

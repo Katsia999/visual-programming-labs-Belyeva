@@ -5,8 +5,14 @@ try {
         New-Item -ItemType Directory -Path $directory -Force | Out-Null
     }
     if (-not (Test-Path '.env')) {
-        $dbPassword = [Convert]::ToHexString([Security.Cryptography.RandomNumberGenerator]::GetBytes(24))
-        $encryptionSecret = [Convert]::ToBase64String([Security.Cryptography.RandomNumberGenerator]::GetBytes(24))
+        $random = [Security.Cryptography.RandomNumberGenerator]::Create()
+        $dbBytes = New-Object byte[] 24
+        $secretBytes = New-Object byte[] 24
+        $random.GetBytes($dbBytes)
+        $random.GetBytes($secretBytes)
+        $random.Dispose()
+        $dbPassword = [BitConverter]::ToString($dbBytes).Replace('-', '')
+        $encryptionSecret = [Convert]::ToBase64String($secretBytes)
         @"
 POSTGRES_PASSWORD=$dbPassword
 DATABASE_URL=postgresql://postgres:${dbPassword}@db:5432/typebot

@@ -36,7 +36,7 @@ groups['Additional information'].blocks.find(b => b.type === 'text input').optio
 bot.name = 'lab5-Беляева-СДП-ИИ-241-консультация';
 bot.settings = {
   general: {
-    isBrandingEnabled: true,
+    isBrandingEnabled: false,
     isNewResultOnRefreshEnabled: true,
     systemMessages: {
       invalidMessage: 'Проверьте введённые данные и попробуйте ещё раз.',
@@ -55,6 +55,7 @@ bot.settings = {
   metadata: { title: 'Консультация по лабораторным — Беляева', description: 'Учебный чат-бот Беляевой Екатерины, СДП-ИИ-241. Заявка на консультацию по визуальному программированию.', allowIndexing: false },
 };
 for (const k of ['id','workspaceId','folderId','createdAt','updatedAt','publicId','customDomain','resultsTablePreferences','whatsAppCredentialsId']) delete bot[k];
+bot.folderId = null;
 fs.writeFileSync(new URL('./exports/flow-01-belyeva-ru.json', import.meta.url), JSON.stringify(bot,null,2)+'\n');
 console.log('Сохранён перевод официального шаблона Lead Generation.');
 
