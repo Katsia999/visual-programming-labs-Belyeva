@@ -12,3 +12,5 @@
 
 
 - [Лабораторная 3 — Bubble и CRUD](lab3/README.md)
+
+- [Лабораторная 4 — n8n и Redis](lab4/README.md)
