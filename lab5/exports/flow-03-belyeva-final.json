@@ -1,0 +1,811 @@
+{
+  "version": "6.1",
+  "name": "lab5-Беляева-СДП-ИИ-241-консультация",
+  "events": [
+    {
+      "id": "k6kY6gwRE6noPoYQNGzgUq",
+      "outgoingEdgeId": "oNvqaqNExdSH2kKEhKZHuE",
+      "graphCoordinates": {
+        "x": 0,
+        "y": 0
+      },
+      "type": "start"
+    }
+  ],
+  "groups": [
+    {
+      "id": "kinRXxYop2X4d7F9qt8WNB",
+      "title": "01 Приветствие Беляева",
+      "graphCoordinates": {
+        "x": 1,
+        "y": 148
+      },
+      "blocks": [
+        {
+          "id": "sc1y8VwDabNJgiVTBi4qtif",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Здравствуйте! Это бот Беляевой Екатерины, СДП-ИИ-241. Помогу оформить заявку на консультацию по лабораторным."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "sbjZWLJGVkHAkDqS4JQeGow",
+          "outgoingEdgeId": "i51YhHpk1dtSyduFNf5Wim",
+          "type": "choice input",
+          "items": [
+            {
+              "id": "hQw2zbp7FDX7XYK9cFpbgC",
+              "content": "Начать заявку"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "o4SH1UtKANnW5N5D67oZUz",
+      "title": "03 Почта",
+      "graphCoordinates": {
+        "x": 669,
+        "y": 141
+      },
+      "blocks": [
+        {
+          "id": "sxeYubYN6XzhAfG7m9Fivhc",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Рада знакомству, {{Имя}}!"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "scQ5kduafAtfP9T8SHUJnGi",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Укажите учебную почту для ответа. Для проверки можно использовать адрес на example.com."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "snbsad18Bgry8yZ8DZCfdFD",
+          "outgoingEdgeId": "w3MiN1Ct38jT5NykVsgmb5",
+          "type": "email input",
+          "options": {
+            "variableId": "v3VFChNVSCXQ2rXv4DrJ8Ah",
+            "labels": {
+              "placeholder": "Например, belyeva@example.com",
+              "button": "Продолжить"
+            },
+            "retryMessageContent": "Введите корректную почту, например belyeva@example.com."
+          }
+        }
+      ]
+    },
+    {
+      "id": "q5dAhqSTCaNdiGSJm9B9Rw",
+      "title": "02 Имя",
+      "graphCoordinates": {
+        "x": 340,
+        "y": 143
+      },
+      "blocks": [
+        {
+          "id": "sgtE2Sy7cKykac9B223Kq9R",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Как к вам обращаться?"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "sqEsMo747LTDnY9FjQcEwUv",
+          "outgoingEdgeId": "4tYbERpi5Po4goVgt6rWXg",
+          "type": "text input",
+          "options": {
+            "variableId": "giiLFGw5xXBCHzvp1qAbdX",
+            "labels": {
+              "placeholder": "Например, Екатерина Беляева",
+              "button": "Продолжить"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "fKqRz7iswk7ULaj5PJocZL",
+      "title": "04 Тема консультации",
+      "graphCoordinates": {
+        "x": 1002,
+        "y": 144
+      },
+      "blocks": [
+        {
+          "id": "su7HceVXWyTCzi2vv3m4QbK",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "По какой теме нужна консультация?"
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "s5VQGsVF4hQgziQsXVdwPDW",
+          "outgoingEdgeId": "ohTRakmcYJ7GdFWRZrWRjk",
+          "type": "choice input",
+          "items": [
+            {
+              "id": "fnLCBF4NdraSwcubnBhk8H",
+              "content": "Node-RED и MQTT"
+            },
+            {
+              "id": "a782h8ynMouY84QjH7XSnR",
+              "content": "Bubble и CRUD"
+            },
+            {
+              "id": "jGvh94zBByvVFpSS3w97zY",
+              "content": "n8n и Redis"
+            },
+            {
+              "id": "6PRLbKUezuFmwWtLVbvAQ7",
+              "content": "Typebot и чат-боты"
+            }
+          ],
+          "options": {
+            "variableId": "varbelyevatopic"
+          }
+        }
+      ]
+    },
+    {
+      "id": "7qHBEyCMvKEJryBHzPmHjV",
+      "title": "05 Вопрос",
+      "graphCoordinates": {
+        "x": 1337,
+        "y": 145
+      },
+      "blocks": [
+        {
+          "id": "sqR8Sz9gW21aUYKtUikq7qZ",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Опишите вопрос и укажите номер лабораторной."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "sqFy2G3C1mh9p6s3QBdSS5x",
+          "outgoingEdgeId": "sH5nUssG2XQbm6ZidGv9BY",
+          "type": "text input",
+          "options": {
+            "isLong": true,
+            "labels": {
+              "placeholder": "Ваш вопрос по лабораторной",
+              "button": "Продолжить"
+            },
+            "variableId": "varbelyevaquestion"
+          }
+        }
+      ]
+    },
+    {
+      "id": "vF7AD7zSAj7SNvN3gr9N94",
+      "title": "06 Итог заявки",
+      "graphCoordinates": {
+        "x": 2360,
+        "y": 490
+      },
+      "blocks": [
+        {
+          "id": "seLegenCgUwMopRFeAefqZ7",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Заявка сохранена в результатах бота."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "s779Q1y51aVaDUJVrFb16vv",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "{{Имя}}, тема: {{Тема}}. Почта для ответа: {{Почта}}. Это учебная демонстрация: письмо и уведомление преподавателю не отправляются."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blockbelyevasummary",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Группа: {{Группа}}. Маршрут: {{Маршрут}}. Вопрос: {{Вопрос}}. Спасибо за обращение!"
+                  }
+                ]
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "groupbelyevastudent",
+      "title": "02а Учебная группа",
+      "graphCoordinates": {
+        "x": 340,
+        "y": 490
+      },
+      "blocks": [
+        {
+          "id": "blockbelyevagroupask",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Укажите вашу группу. Например, СДП-ИИ-241."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blockbelyevagroupinput",
+          "type": "text input",
+          "outgoingEdgeId": "edgebelyevacheck",
+          "options": {
+            "variableId": "varbelyevagroup",
+            "labels": {
+              "placeholder": "Например, СДП-ИИ-241",
+              "button": "Проверить группу"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "id": "groupbelyevacondition",
+      "title": "02б Проверка группы",
+      "graphCoordinates": {
+        "x": 680,
+        "y": 490
+      },
+      "blocks": [
+        {
+          "id": "blockbelyevacondition",
+          "type": "Condition",
+          "outgoingEdgeId": "edgebelyevaother",
+          "items": [
+            {
+              "id": "itembelyevamatch",
+              "outgoingEdgeId": "edgebelyevamatch",
+              "content": {
+                "comparisons": [
+                  {
+                    "id": "comparisonbelyeva",
+                    "variableId": "varbelyevagroup",
+                    "comparisonOperator": "Equal to",
+                    "value": "СДП-ИИ-241"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "groupbelyevasame",
+      "title": "02в Своя группа",
+      "graphCoordinates": {
+        "x": 1020,
+        "y": 490
+      },
+      "blocks": [
+        {
+          "id": "blockbelyevasame",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Вы из группы СДП-ИИ-241. Подготовим консультацию по нашей программе."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blockbelyevasameroute",
+          "type": "Set variable",
+          "outgoingEdgeId": "edgebelyevasameemail",
+          "options": {
+            "variableId": "varbelyevaroute",
+            "expressionToEvaluate": "Своя группа"
+          }
+        }
+      ]
+    },
+    {
+      "id": "groupbelyevaother",
+      "title": "02г Другая группа",
+      "graphCoordinates": {
+        "x": 1020,
+        "y": 810
+      },
+      "blocks": [
+        {
+          "id": "blockbelyevaother",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Вы указали другую группу: {{Группа}}. Заявку тоже можно оставить; укажите в вопросе свою учебную программу."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blockbelyevaotherroute",
+          "type": "Set variable",
+          "outgoingEdgeId": "edgebelyevaotheremail",
+          "options": {
+            "variableId": "varbelyevaroute",
+            "expressionToEvaluate": "Другая группа"
+          }
+        }
+      ]
+    },
+    {
+      "id": "groupbelyevahttp",
+      "title": "07 HTTP время Минска",
+      "graphCoordinates": {
+        "x": 1340,
+        "y": 490
+      },
+      "blocks": [
+        {
+          "id": "blockbelyevahttptxt",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Получаю текущее время Минска через публичный API. Ваши имя, группа, почта и вопрос в этот запрос не передаются."
+                  }
+                ]
+              }
+            ]
+          }
+        },
+        {
+          "id": "blockbelyevahttp",
+          "type": "Webhook",
+          "outgoingEdgeId": "edgebelyevatimecheck",
+          "options": {
+            "timeout": 15,
+            "webhook": {
+              "method": "GET",
+              "url": "https://timeapi.io/api/time/current/zone?timeZone=Europe/Minsk"
+            },
+            "responseVariableMapping": [
+              {
+                "id": "mappingbelyevatime",
+                "variableId": "varbelyevatime",
+                "bodyPath": "data.dateTime"
+              }
+            ]
+          }
+        }
+      ]
+    },
+    {
+      "id": "groupbelyevatimecheck",
+      "title": "08 Ответ API получен",
+      "graphCoordinates": {
+        "x": 1680,
+        "y": 490
+      },
+      "blocks": [
+        {
+          "id": "blockbelyevatimecheck",
+          "type": "Condition",
+          "outgoingEdgeId": "edgebelyevatimefail",
+          "items": [
+            {
+              "id": "itembelyevatimeok",
+              "outgoingEdgeId": "edgebelyevatimeok",
+              "content": {
+                "comparisons": [
+                  {
+                    "id": "comparisonbelyevatime",
+                    "variableId": "varbelyevatime",
+                    "comparisonOperator": "Is set"
+                  }
+                ]
+              }
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "groupbelyevatimeok",
+      "title": "09 Время получено",
+      "graphCoordinates": {
+        "x": 2020,
+        "y": 490
+      },
+      "blocks": [
+        {
+          "id": "blockbelyevatimeok",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Время Минска по данным API: {{Время Минска}}."
+                  }
+                ]
+              }
+            ]
+          },
+          "outgoingEdgeId": "edgebelyevaokbye"
+        }
+      ]
+    },
+    {
+      "id": "groupbelyevatimefail",
+      "title": "10 API недоступен",
+      "graphCoordinates": {
+        "x": 2020,
+        "y": 800
+      },
+      "blocks": [
+        {
+          "id": "blockbelyevatimefail",
+          "type": "text",
+          "content": {
+            "richText": [
+              {
+                "type": "p",
+                "children": [
+                  {
+                    "text": "Сервис времени сейчас недоступен. Это не мешает сохранить вашу заявку."
+                  }
+                ]
+              }
+            ]
+          },
+          "outgoingEdgeId": "edgebelyevafailbye"
+        }
+      ]
+    }
+  ],
+  "edges": [
+    {
+      "id": "oNvqaqNExdSH2kKEhKZHuE",
+      "from": {
+        "eventId": "k6kY6gwRE6noPoYQNGzgUq"
+      },
+      "to": {
+        "groupId": "kinRXxYop2X4d7F9qt8WNB"
+      }
+    },
+    {
+      "id": "i51YhHpk1dtSyduFNf5Wim",
+      "from": {
+        "blockId": "sbjZWLJGVkHAkDqS4JQeGow"
+      },
+      "to": {
+        "groupId": "q5dAhqSTCaNdiGSJm9B9Rw"
+      }
+    },
+    {
+      "id": "4tYbERpi5Po4goVgt6rWXg",
+      "from": {
+        "blockId": "sqEsMo747LTDnY9FjQcEwUv"
+      },
+      "to": {
+        "groupId": "groupbelyevastudent"
+      }
+    },
+    {
+      "id": "w3MiN1Ct38jT5NykVsgmb5",
+      "from": {
+        "blockId": "snbsad18Bgry8yZ8DZCfdFD"
+      },
+      "to": {
+        "groupId": "fKqRz7iswk7ULaj5PJocZL"
+      }
+    },
+    {
+      "id": "ohTRakmcYJ7GdFWRZrWRjk",
+      "from": {
+        "blockId": "s5VQGsVF4hQgziQsXVdwPDW"
+      },
+      "to": {
+        "groupId": "7qHBEyCMvKEJryBHzPmHjV"
+      }
+    },
+    {
+      "id": "sH5nUssG2XQbm6ZidGv9BY",
+      "from": {
+        "blockId": "sqFy2G3C1mh9p6s3QBdSS5x"
+      },
+      "to": {
+        "groupId": "groupbelyevahttp"
+      }
+    },
+    {
+      "id": "edgebelyevacheck",
+      "from": {
+        "blockId": "blockbelyevagroupinput"
+      },
+      "to": {
+        "groupId": "groupbelyevacondition"
+      }
+    },
+    {
+      "id": "edgebelyevamatch",
+      "from": {
+        "blockId": "blockbelyevacondition",
+        "itemId": "itembelyevamatch"
+      },
+      "to": {
+        "groupId": "groupbelyevasame"
+      }
+    },
+    {
+      "id": "edgebelyevaother",
+      "from": {
+        "blockId": "blockbelyevacondition"
+      },
+      "to": {
+        "groupId": "groupbelyevaother"
+      }
+    },
+    {
+      "id": "edgebelyevasameemail",
+      "from": {
+        "blockId": "blockbelyevasameroute"
+      },
+      "to": {
+        "groupId": "o4SH1UtKANnW5N5D67oZUz"
+      }
+    },
+    {
+      "id": "edgebelyevaotheremail",
+      "from": {
+        "blockId": "blockbelyevaotherroute"
+      },
+      "to": {
+        "groupId": "o4SH1UtKANnW5N5D67oZUz"
+      }
+    },
+    {
+      "id": "edgebelyevatimecheck",
+      "from": {
+        "blockId": "blockbelyevahttp"
+      },
+      "to": {
+        "groupId": "groupbelyevatimecheck"
+      }
+    },
+    {
+      "id": "edgebelyevatimeok",
+      "from": {
+        "blockId": "blockbelyevatimecheck",
+        "itemId": "itembelyevatimeok"
+      },
+      "to": {
+        "groupId": "groupbelyevatimeok"
+      }
+    },
+    {
+      "id": "edgebelyevatimefail",
+      "from": {
+        "blockId": "blockbelyevatimecheck"
+      },
+      "to": {
+        "groupId": "groupbelyevatimefail"
+      }
+    },
+    {
+      "id": "edgebelyevaokbye",
+      "from": {
+        "blockId": "blockbelyevatimeok"
+      },
+      "to": {
+        "groupId": "vF7AD7zSAj7SNvN3gr9N94"
+      }
+    },
+    {
+      "id": "edgebelyevafailbye",
+      "from": {
+        "blockId": "blockbelyevatimefail"
+      },
+      "to": {
+        "groupId": "vF7AD7zSAj7SNvN3gr9N94"
+      }
+    }
+  ],
+  "variables": [
+    {
+      "id": "giiLFGw5xXBCHzvp1qAbdX",
+      "name": "Имя",
+      "isSessionVariable": true
+    },
+    {
+      "id": "v3VFChNVSCXQ2rXv4DrJ8Ah",
+      "name": "Почта",
+      "isSessionVariable": true
+    },
+    {
+      "id": "varbelyevatopic",
+      "name": "Тема",
+      "isSessionVariable": true
+    },
+    {
+      "id": "varbelyevaquestion",
+      "name": "Вопрос",
+      "isSessionVariable": true
+    },
+    {
+      "id": "varbelyevagroup",
+      "name": "Группа",
+      "isSessionVariable": true
+    },
+    {
+      "id": "varbelyevaroute",
+      "name": "Маршрут",
+      "isSessionVariable": true
+    },
+    {
+      "id": "varbelyevatime",
+      "name": "Время Минска",
+      "isSessionVariable": true
+    }
+  ],
+  "theme": {
+    "general": {
+      "font": "Arial",
+      "background": {
+        "type": "Color",
+        "content": "#F0F6F2"
+      }
+    },
+    "chat": {
+      "hostBubbles": {
+        "backgroundColor": "#FFFFFF",
+        "color": "#18392B"
+      },
+      "guestBubbles": {
+        "backgroundColor": "#226747",
+        "color": "#FFFFFF"
+      },
+      "buttons": {
+        "backgroundColor": "#226747",
+        "color": "#FFFFFF"
+      },
+      "inputs": {
+        "backgroundColor": "#FFFFFF",
+        "color": "#18392B",
+        "placeholderColor": "#64786B"
+      },
+      "buttonsInput": {
+        "layout": "vertical"
+      },
+      "roundness": "large"
+    }
+  },
+  "selectedThemeTemplateId": null,
+  "settings": {
+    "general": {
+      "isBrandingEnabled": true,
+      "isNewResultOnRefreshEnabled": true,
+      "systemMessages": {
+        "invalidMessage": "Проверьте введённые данные и попробуйте ещё раз.",
+        "botClosed": "Бот сейчас закрыт.",
+        "networkErrorTitle": "Ошибка соединения",
+        "networkErrorMessage": "Проверьте соединение и повторите попытку.",
+        "popupBlockedTitle": "Окно заблокировано",
+        "popupBlockedDescription": "Разрешите открыть окно, чтобы продолжить.",
+        "popupBlockedButtonLabel": "Открыть окно",
+        "fileUploadError": "Не удалось загрузить файл.",
+        "fileUploadSizeError": "Файл слишком большой.",
+        "whatsAppPictureChoiceSelectLabel": "Выбрать"
+      }
+    },
+    "typingEmulation": {
+      "enabled": false
+    },
+    "metadata": {
+      "title": "Консультация по лабораторным — Беляева",
+      "description": "Учебный чат-бот Беляевой Екатерины, СДП-ИИ-241. Заявка на консультацию по визуальному программированию.",
+      "allowIndexing": false
+    }
+  },
+  "icon": "🎓",
+  "isArchived": false,
+  "isClosed": false
+}

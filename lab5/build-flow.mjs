@@ -93,3 +93,40 @@ connect('edgebelyevasameemail','blockbelyevasameroute',groups.Email.id);
 connect('edgebelyevaotheremail','blockbelyevaotherroute',groups.Email.id);
 fs.writeFileSync(new URL('./exports/flow-02-belyeva-condition.json',import.meta.url),JSON.stringify(bot,null,2)+'\n');
 console.log('Добавлены ввод группы, Condition и две ветви.');
+
+bot.variables.push({id:'varbelyevatime',name:'Время Минска',isSessionVariable:true});
+bot.edges.find(e=>e.id==='sH5nUssG2XQbm6ZidGv9BY').to.groupId='groupbelyevahttp';
+bot.groups.push(
+  {id:'groupbelyevahttp',title:'07 HTTP время Минска',graphCoordinates:{x:1340,y:490},blocks:[
+    addText('blockbelyevahttptxt','Получаю текущее время Минска через публичный API. Ваши имя, группа, почта и вопрос в этот запрос не передаются.'),
+    {id:'blockbelyevahttp',type:'Webhook',outgoingEdgeId:'edgebelyevatimecheck',options:{
+      timeout:15,
+      webhook:{method:'GET',url:'https://timeapi.io/api/time/current/zone?timeZone=Europe/Minsk'},
+      responseVariableMapping:[{id:'mappingbelyevatime',variableId:'varbelyevatime',bodyPath:'data.dateTime'}]
+    }}
+  ]},
+  {id:'groupbelyevatimecheck',title:'08 Ответ API получен',graphCoordinates:{x:1680,y:490},blocks:[
+    {id:'blockbelyevatimecheck',type:'Condition',outgoingEdgeId:'edgebelyevatimefail',items:[{id:'itembelyevatimeok',outgoingEdgeId:'edgebelyevatimeok',content:{comparisons:[{id:'comparisonbelyevatime',variableId:'varbelyevatime',comparisonOperator:'Is set'}]}}]}
+  ]},
+  {id:'groupbelyevatimeok',title:'09 Время получено',graphCoordinates:{x:2020,y:490},blocks:[
+    {...addText('blockbelyevatimeok','Время Минска по данным API: {{Время Минска}}.'),outgoingEdgeId:'edgebelyevaokbye'}
+  ]},
+  {id:'groupbelyevatimefail',title:'10 API недоступен',graphCoordinates:{x:2020,y:800},blocks:[
+    {...addText('blockbelyevatimefail','Сервис времени сейчас недоступен. Это не мешает сохранить вашу заявку.'),outgoingEdgeId:'edgebelyevafailbye'}
+  ]}
+);
+connect('edgebelyevatimecheck','blockbelyevahttp','groupbelyevatimecheck');
+connect('edgebelyevatimeok','blockbelyevatimecheck','groupbelyevatimeok','itembelyevatimeok');
+connect('edgebelyevatimefail','blockbelyevatimecheck','groupbelyevatimefail');
+connect('edgebelyevaokbye','blockbelyevatimeok',groups.Bye.id);
+connect('edgebelyevafailbye','blockbelyevatimefail',groups.Bye.id);
+groups.Bye.graphCoordinates={x:2360,y:490};
+groups.Bye.blocks.push(addText('blockbelyevasummary','Группа: {{Группа}}. Маршрут: {{Маршрут}}. Вопрос: {{Вопрос}}. Спасибо за обращение!'));
+bot.theme={general:{font:'Arial',background:{type:'Color',content:'#F0F6F2'}},chat:{
+  hostBubbles:{backgroundColor:'#FFFFFF',color:'#18392B'},guestBubbles:{backgroundColor:'#226747',color:'#FFFFFF'},
+  buttons:{backgroundColor:'#226747',color:'#FFFFFF'},inputs:{backgroundColor:'#FFFFFF',color:'#18392B',placeholderColor:'#64786B'},
+  buttonsInput:{layout:'vertical'},roundness:'large'
+}};
+bot.icon='🎓';
+fs.writeFileSync(new URL('./exports/flow-03-belyeva-final.json',import.meta.url),JSON.stringify(bot,null,2)+'\n');
+console.log('Добавлены HTTP Request, обработка ошибки и зелёная тема.');
