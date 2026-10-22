@@ -1,0 +1,100 @@
+{
+  "id": "lab4Belyeva04",
+  "name": "04 Set полный объект — Беляева СДП-ИИ-241",
+  "nodes": [
+    {
+      "id": "f07ff8c5-e0fd-4427-8876-44484542cf29",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        300
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "dae40cba-0e26-42c6-97ce-d4491763bda5",
+      "name": "Set поля сообщения",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        500,
+        300
+      ],
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "c332b30d-9c51-4444-af5e-ef6d87349619",
+              "name": "topic",
+              "value": "lab4/belyeva/set",
+              "type": "string"
+            },
+            {
+              "id": "08056122-1afd-4aae-a578-4c7e0cb6a57f",
+              "name": "timestamp",
+              "value": "={{ $now.toISO() }}",
+              "type": "string"
+            },
+            {
+              "id": "66f81dbf-306f-4d9d-9223-1a6ab68ab7a6",
+              "name": "payload",
+              "value": "Беляева, СДП-ИИ-241",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "e34a2d8a-118c-478a-ad68-ea4b02e5bb72",
+      "name": "Code полный объект",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        760,
+        300
+      ],
+      "parameters": {
+        "jsCode": "return $input.all().map(item => { console.log(JSON.stringify(item.json)); return { json: { ...item.json } }; });"
+      }
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Set поля сообщения",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Set поля сообщения": {
+      "main": [
+        [
+          {
+            "node": "Code полный объект",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Minsk",
+    "saveManualExecutions": true,
+    "saveDataSuccessExecution": "all",
+    "saveDataErrorExecution": "all"
+  },
+  "pinData": {},
+  "versionId": "1a8ca884-12f3-4216-aa41-6aa4d800532c",
+  "tags": []
+}

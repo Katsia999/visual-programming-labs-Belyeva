@@ -1,0 +1,138 @@
+{
+  "id": "lab4Belyeva03",
+  "name": "03 IF две ветви — Беляева СДП-ИИ-241",
+  "nodes": [
+    {
+      "id": "66113dd4-e704-4d64-a1cb-c9f13ba1753c",
+      "name": "Manual Trigger",
+      "type": "n8n-nodes-base.manualTrigger",
+      "typeVersion": 1,
+      "position": [
+        240,
+        300
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "ddf74d8f-0335-48bf-a6ad-61265617af20",
+      "name": "Code два примера",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        500,
+        300
+      ],
+      "parameters": {
+        "jsCode": "const student = { surname: 'Беляева', group: 'СДП-ИИ-241' };\nconst samples = [[20, 5, 10], [2, 5, 10]];\nconst result = [];\nfor (const values of samples) {\n  let total = 0;\n  for (const value of values) { total += value; }\n  let level;\n  if (total >= 30) { level = 'high'; } else { level = 'low'; }\n  result.push({ json: { payload: { ...student, values, total, level } } });\n}\nreturn result;"
+      }
+    },
+    {
+      "id": "f90fa443-4e40-45b0-b3a4-77894b30c860",
+      "name": "IF total >= 30",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2.2,
+      "position": [
+        760,
+        300
+      ],
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict",
+            "version": 2
+          },
+          "conditions": [
+            {
+              "id": "8469da33-acab-42a8-818d-3bcc25231bbd",
+              "leftValue": "={{ $json.payload.total }}",
+              "rightValue": 30,
+              "operator": {
+                "type": "number",
+                "operation": "gte"
+              }
+            }
+          ],
+          "combinator": "and"
+        },
+        "options": {}
+      }
+    },
+    {
+      "id": "3a0c0a42-c066-4b71-9015-97e4b0f115e2",
+      "name": "NoOp true high",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        200
+      ],
+      "parameters": {}
+    },
+    {
+      "id": "061468a0-ec69-40b0-a87e-a24b76f8375e",
+      "name": "NoOp false low",
+      "type": "n8n-nodes-base.noOp",
+      "typeVersion": 1,
+      "position": [
+        1020,
+        420
+      ],
+      "parameters": {}
+    }
+  ],
+  "connections": {
+    "Manual Trigger": {
+      "main": [
+        [
+          {
+            "node": "Code два примера",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Code два примера": {
+      "main": [
+        [
+          {
+            "node": "IF total >= 30",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF total >= 30": {
+      "main": [
+        [
+          {
+            "node": "NoOp true high",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "NoOp false low",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Europe/Minsk",
+    "saveManualExecutions": true,
+    "saveDataSuccessExecution": "all",
+    "saveDataErrorExecution": "all"
+  },
+  "pinData": {},
+  "versionId": "b7375836-44bd-495e-95a4-52d776f535b0",
+  "tags": []
+}
